@@ -1,0 +1,3 @@
+#Aprendizados da semana
+Nessa semana de onboarding da **Labenu**, aprendi a mexer no terminal, no VScode e me estressar com o git.
+**Brincadeiras a parte**, nessa primeira semana senti que estou tendo um pouco menos de dificuldade do que eu teria. Após assistir as aulas de terminal e git dadas por um de nossos intrutores, o **Luiz,** consegui mexer tranquilamente nas ferramentas e tive poucos problemas.
