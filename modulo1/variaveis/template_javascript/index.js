@@ -9,7 +9,7 @@
    
    
 Exercício de escrita 
-   1-*/
+ 1-*/
 
    /*const nome = prompt("Qual é o seu nome?")
    const idade = prompt("Qual é a sua idade?")
@@ -28,10 +28,10 @@ Uncaught SyntaxError: Missing initializer in const declaration (at index.js:14:1
 O erro citado na linha anterior apareceu devido a falta de atribuição do valor da constante
 
 Após adicionar o prompt como valor das constantes (nome,idade) para perguntar nome e idade do usuário e imprimir os tipos de váriaveis,
-o console imprimiu que as váriaveis são do tipo "object"*/
+o console imprimiu que as váriaveis são do tipo "object"
 
 
-/*2-
+2-
 
 let sono = "Você está com sono hoje?"
 let almoço = "Você já almoçou?"
@@ -44,6 +44,7 @@ console.log(almoço, resp1,)
 console.log(academia, resp2)
 
 3-
+
 let a = 10
 let b = 25
 
