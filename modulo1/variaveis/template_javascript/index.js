@@ -43,10 +43,11 @@ console.log(sono, resp1)
 console.log(almoço, resp1,)
 console.log(academia, resp2)
 
+3-
 let a = 10
 let b = 25
 
-c = 10
+c = a
 a = b
 b = c
 
