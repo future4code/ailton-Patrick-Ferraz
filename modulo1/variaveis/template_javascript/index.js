@@ -63,7 +63,8 @@ let num2 = prompt("Digite outro número")
 let num1Numero = Number(num1)
 let num2Numero = Number(num2)
 
-let resultado = num1Numero + num2Numero
+let resultado1 = num1Numero + num2Numero
+let resultado2 = num1Numero * num2Numero
 
-console.log(resultado) 
+console.log("Resultado da soma é",resultado1, "Resultado da multiplicação é", resultado2)*/
 */
