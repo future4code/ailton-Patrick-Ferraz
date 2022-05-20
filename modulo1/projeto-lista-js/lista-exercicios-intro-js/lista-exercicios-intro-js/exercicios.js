@@ -38,8 +38,6 @@
 // // EXERCÍCIO 03
 // function calculaIMC(peso, altura) {
 // //   // implemente sua lógica aqui
-// peso = Number(prompt("Qual o seu peso, em kg? (Utilize ponto no lugar da virgula"))
-// altura = Number(prompt("Qual a sua altura, em metros? (Utilize ponto no lugar da virgula"))
 // let  calculoIMC = peso / (altura * altura)
 // return calculoIMC
 // }
@@ -84,11 +82,8 @@
 // // EXERCÍCIO 08
 // function checaStringsMesmoTamanho(string1, string2) {
 //   // implemente sua lógica aqui
-//   string1 = prompt("Coloque uma palavra")
-//   string2 = prompt("Coloque outra palavra")
 // let stringTamanho1 = string1.length
 // let stringTamanho2 = string2.length
-
 // let stringIguais = stringTamanho1 === stringTamanho2
 
 // return stringIguais
@@ -109,9 +104,15 @@
 // }
 
 // // EXERCÍCIO 11
-function trocaPrimeiroEUltimo(array) {
-//   // implemente sua lógica aqui
+// function trocaPrimeiroEUltimo(array) {
+// //   // implemente sua lógica aqui
+// const primeiroItem = array.shift()
+// const ultimoItem =  array.pop()
+// array.unshift(ultimoItem)
+// array.push(primeiroItem)
 
+// return array
+// }
 
 // // EXERCÍCIO 12
 // function checaIgualdadeDesconsiderandoCase(string1, string2) {
