@@ -91,27 +91,18 @@ function retornaPessoaAnonimizada(pessoa) {
 
 // EXERCÍCIO 13A
 function retornaPessoasAutorizadas(pessoas) {
-   let pessoasAutorizadas = pessoas.filter((pessoa) =>{
-       return pessoa.idade < 60
-   }).filter((pessoa) =>{
-       return pessoa.idade > 14
-   }).filter((pessoa) => {
-       return pessoa.altura >= 1.5
-   })
-   return pessoasAutorizadas
-   }
-
+    const pessoaAutorizada = pessoas.filter((inf) => {
+        return inf.idade > 14 && inf.idade < 60 && inf.altura > 1.5
+        })
+        return pessoaAutorizada
+    }
 
 // EXERCÍCIO 13B
 function retornaPessoasNaoAutorizadas(pessoas) {
-    let pessoasNaoAutorizadas = pessoas.filter((pessoa) =>{
-        return pessoa.idade > 60
-    }).filter((pessoa) =>{
-        return pessoa.idade < 14
-    }).filter((pessoa) => {
-        return pessoa.altura < 1.5
+    const pessoaNaoAutorizada = pessoas.filter((inf) => {
+        return inf.idade <= 14 || inf.idade > 60 || inf.altura < 1.5
     })
-    return pessoasNaoAutorizadas
+    return pessoaNaoAutorizada
     }
 
 // EXERCÍCIO 14
@@ -122,11 +113,11 @@ function retornaContasComSaldoAtualizado(contas) {
 
 // EXERCÍCIO 15A
 function retornaArrayOrdenadoAlfabeticamente(consultas) {
-  let consultasOrdemAlfabetica = consultas.nome.sort()
-  return consultasOrdemAlfabetica
+
 }
 
 // EXERCÍCIO 15B
 function retornaArrayOrdenadoPorData(consultas) {
    
 }
+
