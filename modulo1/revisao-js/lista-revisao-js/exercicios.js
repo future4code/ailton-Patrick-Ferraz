@@ -55,7 +55,7 @@ function retornaObjetoEntreDoisNumeros(num1, num2) {
 
 // EXERCÍCIO 08
 function retornaNPrimeirosPares(n) {
-   
+
 }
 
 // EXERCÍCIO 09
@@ -84,27 +84,46 @@ function retornaChamadaDeFilme(filme) {
 
 // EXERCÍCIO 12
 function retornaPessoaAnonimizada(pessoa) {
-   
+   return{...pessoa,
+    nome:"ANÔNIMO"
+}
 }
 
 // EXERCÍCIO 13A
 function retornaPessoasAutorizadas(pessoas) {
-   
-}
+   let pessoasAutorizadas = pessoas.filter((pessoa) =>{
+       return pessoa.idade < 60
+   }).filter((pessoa) =>{
+       return pessoa.idade > 14
+   }).filter((pessoa) => {
+       return pessoa.altura >= 1.5
+   })
+   return pessoasAutorizadas
+   }
+
 
 // EXERCÍCIO 13B
 function retornaPessoasNaoAutorizadas(pessoas) {
-  
-}
+    let pessoasNaoAutorizadas = pessoas.filter((pessoa) =>{
+        return pessoa.idade > 60
+    }).filter((pessoa) =>{
+        return pessoa.idade < 14
+    }).filter((pessoa) => {
+        return pessoa.altura < 1.5
+    })
+    return pessoasNaoAutorizadas
+    }
 
 // EXERCÍCIO 14
 function retornaContasComSaldoAtualizado(contas) {
 
+ 
 }
 
 // EXERCÍCIO 15A
 function retornaArrayOrdenadoAlfabeticamente(consultas) {
-  
+  let consultasOrdemAlfabetica = consultas.nome.sort()
+  return consultasOrdemAlfabetica
 }
 
 // EXERCÍCIO 15B
