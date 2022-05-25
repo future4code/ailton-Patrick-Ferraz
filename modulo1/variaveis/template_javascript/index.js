@@ -67,4 +67,3 @@ let resultado1 = num1Numero + num2Numero
 let resultado2 = num1Numero * num2Numero
 
 console.log("Resultado da soma é",resultado1, "Resultado da multiplicação é", resultado2)*/
-*/
