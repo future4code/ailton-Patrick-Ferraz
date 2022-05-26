@@ -56,7 +56,8 @@ div img {
 }
 
 .icone {
-    height: 15px;
+
+    height: 50px;
 }
 
 
@@ -146,7 +147,7 @@ td button {
     background-color: #635a3d
 }
 
-img{
+.imgSize{
     width: 52px;
     height: 52px;
     object-fit: contain
