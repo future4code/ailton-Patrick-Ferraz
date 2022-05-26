@@ -142,11 +142,10 @@ tr{
     border-radius: 5px;
     font-size: 10px;
     color: black;
+    margin: 0 auto;
 }
 
-#back-button:hover {
-    background-color: #5f573b;
-}
+
 
 .buy-button-hover:hover{
     background-color: #b09520;

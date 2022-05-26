@@ -54,7 +54,7 @@
 
 // 2.Faça um programa que contenha um array com 5 das suas comidas preferidas, armazenado em uma variável. Em seguida, siga os passos:
     
-let arrayComidas = ["Sushi", "Pizza", "Lasanha", "Sanduíche", "Pastel"]
+// let arrayComidas = ["Sushi", "Pizza", "Lasanha", "Sanduíche", "Pastel"]
 
 // a) Imprima no console o array completo
     // console.log(arrayComidas)
