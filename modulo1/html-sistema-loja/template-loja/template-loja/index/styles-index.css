@@ -3,7 +3,7 @@ h1{
 }
 
 header {
-    background-color: black;
+    background-color: rgb(231, 122, 21);
     color: whitesmoke;
     text-align: center;
     padding: 20px;
@@ -19,7 +19,7 @@ header {
     text-align: center;
     margin: 8px;
     padding: 8px;
-    background-color: rgb(5, 5, 5);
+    background-color: rgb(231, 122, 21);
     border-radius: 25px;
   }
 
