@@ -70,6 +70,7 @@ div img {
     background-color: #2274a5;
     color: white;
     
+    
 }
 
 #container-de-descricao>ol {
@@ -92,8 +93,13 @@ div img {
 }
 
 #repairMsg{
-    margin-top: 16px;
+    padding-top: 16px;
+    word-wrap: break-word;
 }
+
+/* #repairMsgLineBreak{
+    word-wrap: break-word; */
+/* } */
 
 
 /**
@@ -109,6 +115,7 @@ div:last-child {
 
 table {
     width: 60%;
+    margin: 0 auto;
 }
 
 td button {
