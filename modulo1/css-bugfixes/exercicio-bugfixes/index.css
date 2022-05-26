@@ -148,11 +148,20 @@ td button {
 }
 
 #back-button:hover {
-    background-color: #635a3d
+    background-color: #5f573b;
+}
+
+.buy-button-hover:hover{
+    background-color: #b09520;
+}
+
+.buy-button-active:active{
+    color: white
 }
 
 .img{
     width: 52px;
     height: 52px;
     object-fit: contain
+    
 }
