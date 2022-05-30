@@ -1,0 +1,40 @@
+h1{
+    color: whitesmoke
+}
+
+header {
+    background-color: rgb(231, 122, 21);
+    color: whitesmoke;
+    text-align: center;
+    padding: 20px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    border-radius: 25px;
+  }
+
+  p{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  }
+
+  nav{
+    text-align: center;
+    margin: 8px;
+    padding: 8px;
+    background-color: rgb(231, 122, 21);
+    border-radius: 25px;
+  }
+
+a{
+  text-decoration: underline;
+  color: white;
+}
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
+  text-align: center;
+  border-style: solid;
+}
