@@ -1,5 +1,38 @@
 import React, { Component } from "react";
 import axios from "axios";
+import styled from "styled-components";
+
+const ContainerTelaCadastro = styled.div`
+border: 1px solid black;
+width: 50vw;
+height: 50vh;
+margin-left: 300px;
+margin-top: 50px;
+display: flex;
+flex-direction: column;
+justify-content: space-evenly;
+align-items: center;
+border-radius: 100px;
+background-color: #70bfff;
+`
+const BotaoCadastrar = styled.button`
+display: flex;
+justify-content: center;
+align-items: center;
+border-radius: 25px;
+background-color: #f9b84f;
+border: 1px solid black;
+`
+
+const BotãoIrParaListaUsuarios = styled.button`
+display: flex;
+justify-content: center;
+align-items: center;
+border-radius: 25px;
+background-color: #f9b84f;
+border: 1px solid black;
+`
+
 
 export default class TelaCadastro extends Component {
   state = {
@@ -36,10 +69,10 @@ export default class TelaCadastro extends Component {
 
   render() {
     return (
-      <div>
-        <button onClick={this.props.irParaLista}>
+      <ContainerTelaCadastro>
+        <BotãoIrParaListaUsuarios onClick={this.props.irParaLista}>
           Ir para Lista de Usuario
-        </button>
+        </BotãoIrParaListaUsuarios>
         <h2>Tela de Cadastro</h2>
         <input 
         placeholder="Nome"
@@ -51,8 +84,9 @@ export default class TelaCadastro extends Component {
         value={this.state.inputEmail}
         onChange={this.onChangeEmail}
         />
-        <button onClick={this.fazerCadastro}>Cadastrar</button>
-      </div>
+        <BotaoCadastrar onClick={this.fazerCadastro}>Cadastrar</BotaoCadastrar>
+        <img src="https://img.icons8.com/stickers/100/1A1A1A/jake.png"/>
+      </ContainerTelaCadastro>
     );
   }
 }

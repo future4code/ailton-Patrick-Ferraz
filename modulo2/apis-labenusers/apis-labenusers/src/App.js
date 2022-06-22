@@ -2,6 +2,10 @@ import React, { Component } from "react";
 import axios from "axios";
 import TelaCadastro from "./components/TelaCadastro";
 import TelaListaUsuario from "./components/TelaListaUsuario";
+import styled from "styled-components";
+
+
+
 
 class App extends Component {
   state = {
@@ -29,7 +33,9 @@ irParaLista= () =>{
 
 render(){
   return(
+
   <div>
+
    {this.escolheTela()}
     
   </div>
