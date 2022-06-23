@@ -6,6 +6,7 @@ const CardPlaylist = styled.div`
 border: 1px solid black;
 padding: 10px;
 margin: 10px;
+width: 300px;
 `
 
 export default class CriarPlaylist extends Component {
@@ -49,6 +50,7 @@ export default class CriarPlaylist extends Component {
                 Authorization: "patrick-ferraz-ailton"
             }
         } ).then((res)=>{
+
             this.setState({playlists: res.data.result.list})
         })
         .catch((err)=>{
@@ -62,19 +64,34 @@ export default class CriarPlaylist extends Component {
         this.setState({inputNomePlaylist: e.target.value})
     }
 
+    deletarPlaylist = (id) =>{
+        axios.delete(`https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/${id}`,{
+            headers:{
+                Authorization: "patrick-ferraz-ailton"
+            }
+        })
+        .then((res)=>{
+            alert("Playlist deletada!")
+            this.pegarPlaylist()
+        })
+        .catch((err)=>{
+            alert("Ocorreu um erro, tente novamente")
+        })
+
+    }
 
 
   render() {
     console.log(this.state.playlists)
     const listaPlaylists = this.state.playlists.map((playlist)=>{
-        return <p>{playlist.name}</p>
+        return <CardPlaylist key={playlist.id}>{playlist.name} <button onClick={() => this.deletarPlaylist(playlist.id)}>Deletar</button></CardPlaylist>
     })
 
     return (
-      <div>
+      <div >
          <input onChange={this.onChangeInputNomePlaylist} value={this.state.inputNomePlaylist}  placeholder='Nome da Playlist'/>
         <button onClick={this.criarPlaylist}>Adicionar Playlist</button>
-        {listaPlaylists}
+       {listaPlaylists}
       </div>
     )
   }
