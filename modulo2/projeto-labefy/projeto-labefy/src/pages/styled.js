@@ -7,3 +7,7 @@ border: 1px solid black;
 width: 60vw;
 height: 20vh;
 `
+
+export const Footer = styled.footer`
+border: 1px solid black;
+`

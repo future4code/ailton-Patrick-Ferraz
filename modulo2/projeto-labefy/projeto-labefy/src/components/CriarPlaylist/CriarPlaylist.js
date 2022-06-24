@@ -7,6 +7,10 @@ border: 1px solid black;
 padding: 10px;
 margin: 10px;
 width: 300px;
+&:hover{
+    cursor: pointer;
+    background-color: red;
+}
 `
 
 export default class CriarPlaylist extends Component {
@@ -15,6 +19,9 @@ export default class CriarPlaylist extends Component {
         
         playlists: [],
         inputNomePlaylist:"",
+        inputNomeMusica:"",
+        inputArtistaRelacionado:"",
+        inputUrlMusica:"",
     }
 
 
@@ -50,7 +57,6 @@ export default class CriarPlaylist extends Component {
                 Authorization: "patrick-ferraz-ailton"
             }
         } ).then((res)=>{
-
             this.setState({playlists: res.data.result.list})
         })
         .catch((err)=>{
@@ -58,10 +64,18 @@ export default class CriarPlaylist extends Component {
         })
     }
 
-
-
     onChangeInputNomePlaylist =(e) =>{
         this.setState({inputNomePlaylist: e.target.value})
+    }
+
+    onChangeInputNomeMusica =(e) =>{
+        this.setState({inputNomeMusica: e.target.value})
+    }
+    onChangeInputArtistaRelacionado =(e) =>{
+        this.setState({inputArtistaRelacionado: e.target.value})
+    }
+    onChangeInputUrlMusica =(e) =>{
+        this.setState({inputUrlMusica: e.target.value})
     }
 
     deletarPlaylist = (id) =>{
@@ -84,15 +98,27 @@ export default class CriarPlaylist extends Component {
   render() {
     console.log(this.state.playlists)
     const listaPlaylists = this.state.playlists.map((playlist)=>{
-        return <CardPlaylist key={playlist.id}>{playlist.name} <button onClick={() => this.deletarPlaylist(playlist.id)}>Deletar</button></CardPlaylist>
+        return <CardPlaylist onClick={() => this.props.irPararDetalhesPlaylist(playlist.id)} key={playlist.id}>{playlist.name} <button onClick={() => this.deletarPlaylist(playlist.id)}>Deletar</button></CardPlaylist>
     })
 
     return (
       <div >
+        <h1>Criar Playlist</h1>
          <input onChange={this.onChangeInputNomePlaylist} value={this.state.inputNomePlaylist}  placeholder='Nome da Playlist'/>
         <button onClick={this.criarPlaylist}>Adicionar Playlist</button>
+        <h3>Suas playlists:</h3>
        {listaPlaylists}
+       <div>
+        <h1>Adicionar Músicas</h1>
+        <input onChange={this.onChangeInputNomeMusica} value={this.state.inputNomeMusica} placeholder={"Nome da música"} />
+        <input onChange={this.onChangeInputArtistaRelacionado} value={this.state.inputArtistaRelacionado} placeholder={"Artistas relacionados"} />
+        <input onChange={this.onChangeInputUrlMusica} value={this.state.inputUrlMusica} placeholder={"url da música"} />
+        <button>Adicionar música</button>
+       </div>
       </div>
+
+        
+
     )
   }
 }
