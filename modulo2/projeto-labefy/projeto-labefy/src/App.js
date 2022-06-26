@@ -1,26 +1,50 @@
 import React, { Component } from 'react'
-import Home from './pages/Home/Home'
-import styled from 'styled-components';
+import {Header,Footer,Container,Main} from "./styled"
+import CriarPlaylist from '../src/pages/CriarPlaylist/CriarPlaylist'
+import DetalhesPlaylist from '../src/pages/Musicas/DetalhesPlaylist'
 
-
-const Container = styled.div`
-margin: 0;
-padding: 0;
-box-sizing: border-box;
-border: solid black 1px;
-`
 
 class App extends Component {
-
-  render() {
-    return (
-      <Container>
-      <Home>
-        
-      </Home>
-      </Container>
-    )
+  state = {
+    telaAtual: "playlist",
+    playlistClicada: "",
   }
+  
+  irPararDetalhesPlaylist = (id) => {
+  this.setState({telaAtual:"detalhes", playlistClicada:id})
+  }
+  
+  voltarParaCriarPlaylist = () =>{
+    this.setState({telaAtual: "playlist" , playlistClicada:""})
+  }
+  
+  selecionarPagina = () =>{
+    switch (this.state.telaAtual){
+      case "playlist":
+        return <CriarPlaylist   irPararDetalhesPlaylist ={this.irPararDetalhesPlaylist}/>
+        case "detalhes":
+          return <DetalhesPlaylist voltarParaCriarPlaylist={this.voltarParaCriarPlaylist}  playlistClicada={this.state.playlistClicada}/>
+          default:
+            return <CriarPlaylist  irPararDetalhesPlaylist ={this.irPararDetalhesPlaylist}/>
+  
+    }
+  }
+  
+    render() {
+     
+      return (
+
+        <Container>
+        <Header><h1>Labefy</h1> </Header>
+        <Main>
+      
+        {this.selecionarPagina()}
+        
+        </Main>
+        <Footer>Sou um footer</Footer>
+  </Container>
+      )
+    }
 }
 
 export default App;

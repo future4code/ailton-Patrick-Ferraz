@@ -1,18 +1,8 @@
 import React, { Component } from "react";
 import axios from "axios";
-import styled from "styled-components";
+import { CardPlaylist } from "./styled";
 
 
-const CardPlaylist = styled.div`
-  border: 1px solid black;
-  padding: 10px;
-  margin: 10px;
-  width: 300px;
-  &:hover {
-    cursor: pointer;
-    background-color: red;
-  }
-`;
 
 export default class CriarPlaylist extends Component {
   state = {
@@ -94,11 +84,10 @@ export default class CriarPlaylist extends Component {
     const listaPlaylists = this.state.playlists.map((playlist) => {
       return (
         <CardPlaylist
-        key={playlist.id}
-          onClick={() => this.props.irPararDetalhesPlaylist(playlist.name)}
-         
+          key={playlist.id}
+          onClick={() => this.props.irPararDetalhesPlaylist(playlist.id)}
         >
-          {playlist.name}
+          <p>{playlist.name}</p>
           <button onClick={() => this.deletarPlaylist(playlist.id)}>
             Deletar
           </button>
@@ -108,7 +97,7 @@ export default class CriarPlaylist extends Component {
 
     return (
       <div>
-        <h1>Criar Playlist</h1>
+        <h3>Criar nova Playlist:</h3>
         <input
           onChange={this.onChangeInputNomePlaylist}
           value={this.state.inputNomePlaylist}
