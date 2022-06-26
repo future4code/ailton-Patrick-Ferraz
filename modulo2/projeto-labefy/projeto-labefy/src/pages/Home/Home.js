@@ -1,18 +1,18 @@
 import React, { Component } from 'react'
 import {Header,Footer} from "./styled"
-import CriarPlaylist from '../components/CriarPlaylist/CriarPlaylist'
-import Musicas from '../components/Musicas/Musicas'
+import CriarPlaylist from '../CriarPlaylist/CriarPlaylist'
+import DetalhesPlaylist from '../Musicas/DetalhesPlaylist'
 
 export default class Home extends Component {
 
 state = {
   telaAtual: "playlist",
-  playlistClicada: "",
+  playlistClicada: {},
 }
 
 
 irPararDetalhesPlaylist = (id) => {
-this.setState({telaAtual:"musica", playlistClicada:id})
+this.setState({telaAtual:"detalhes", playlistClicada:id})
 }
 
 voltarParaCriarPlaylist = () =>{
@@ -22,17 +22,18 @@ voltarParaCriarPlaylist = () =>{
 selecionarPagina = () =>{
   switch (this.state.telaAtual){
     case "playlist":
-      return <CriarPlaylist  url={this.state.playlistClicada} irPararDetalhesPlaylist ={this.irPararDetalhesPlaylist}/>
-      case "musica":
-        return <Musicas voltarParaCriarPlaylist={this.voltarParaCriarPlaylist}  url={this.state.playlistClicada}/>
+      return <CriarPlaylist   irPararDetalhesPlaylist ={this.irPararDetalhesPlaylist}/>
+      case "detalhes":
+        return <DetalhesPlaylist voltarParaCriarPlaylist={this.voltarParaCriarPlaylist}  playlistClicada={this.state.playlistClicada}/>
         default:
-          return <CriarPlaylist/>
+          return <CriarPlaylist  irPararDetalhesPlaylist ={this.irPararDetalhesPlaylist}/>
 
   }
 }
 
 
   render() {
+   
     return (
       <div>
       <Header>Sou header </Header>

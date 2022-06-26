@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Home from './pages/Home';
+import Home from './pages/Home/Home'
 import styled from 'styled-components';
 
 
