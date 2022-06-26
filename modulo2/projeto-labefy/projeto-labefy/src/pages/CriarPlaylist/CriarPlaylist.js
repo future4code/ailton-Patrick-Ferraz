@@ -1,8 +1,12 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { CardPlaylist } from "./styled";
-
-
+import {
+  CardPlaylist,
+  BtnDelete,
+  Playlists,
+  CriarPlaylistSection,
+  PlaylistsSection,
+} from "./styled";
 
 export default class CriarPlaylist extends Component {
   state = {
@@ -87,26 +91,31 @@ export default class CriarPlaylist extends Component {
           key={playlist.id}
           onClick={() => this.props.irPararDetalhesPlaylist(playlist.id)}
         >
+          <img src="https://img.icons8.com/stickers/50/000000/personal-video-recorder-menu.png" />
           <p>{playlist.name}</p>
-          <button onClick={() => this.deletarPlaylist(playlist.id)}>
-            Deletar
-          </button>
+          <BtnDelete onClick={() => this.deletarPlaylist(playlist.id)}>
+            <img src="https://img.icons8.com/stickers/50/000000/filled-trash.png" />
+          </BtnDelete>
         </CardPlaylist>
       );
     });
 
     return (
-      <div>
-        <h3>Criar nova Playlist:</h3>
-        <input
-          onChange={this.onChangeInputNomePlaylist}
-          value={this.state.inputNomePlaylist}
-          placeholder="Nome da Playlist"
-        />
-        <button onClick={this.criarPlaylist}>Adicionar Playlist</button>
-        <h3>Suas playlists:</h3>
+      <Playlists>
+        <CriarPlaylistSection>
+          <h3>Criar nova Playlist:</h3>
+          <input
+            onChange={this.onChangeInputNomePlaylist}
+            value={this.state.inputNomePlaylist}
+            placeholder="Nome da Playlist"
+          />
+          <button onClick={this.criarPlaylist}>Adicionar Playlist</button>
+        </CriarPlaylistSection>
+ 
+        <PlaylistsSection>
         {listaPlaylists}
-      </div>
+          </PlaylistsSection>
+      </Playlists>
     );
   }
 }

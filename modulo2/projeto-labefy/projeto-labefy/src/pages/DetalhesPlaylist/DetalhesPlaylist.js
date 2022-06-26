@@ -1,17 +1,8 @@
 import axios from "axios";
 import React, { Component } from "react";
-import styled from "styled-components";
+import {CardPlaylistTrack} from "./styled"
 
-const CardPlaylistTrack = styled.div`
-  border: 1px solid black;
-  padding: 10px;
-  margin: 10px;
-  width: 300px;
-  &:hover {
-    cursor: pointer;
-    background-color: red;
-  }
-`;
+
 
 export default class DetalhesPlaylist extends Component {
   state = {
@@ -106,8 +97,8 @@ export default class DetalhesPlaylist extends Component {
 
 
         <CardPlaylistTrack key={musica.id}>
-          <p>Nome da música:{musica.name}</p>
-          <p>Nome do artista:{musica.artist}</p>
+          <p>Música:{musica.name}</p>
+          <p>Artista:{musica.artist}</p>
           <audio controls>
           <source src={musica.url}></source>
           </audio>

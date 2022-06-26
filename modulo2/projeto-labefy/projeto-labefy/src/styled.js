@@ -6,18 +6,19 @@ background-color: black;
 display:flex;
 justify-content: center;
 align-items: center;
-width: 100%;
-height: 20%;
+width: 100vw;
+height: 20vh;
 color: white;
 `
 
 export const Main = styled.main`
-height: 65%;
+min-width:100vw;
+min-height:100vh;
 `
 
 export const Footer = styled.footer`
-width: 100%;
-height: 15%;
+width: 100vw;
+height: 20vh;
 background-color: black;
 `
 

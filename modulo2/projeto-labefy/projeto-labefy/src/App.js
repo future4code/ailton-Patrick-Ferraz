@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import {Header,Footer,Container,Main} from "./styled"
 import CriarPlaylist from '../src/pages/CriarPlaylist/CriarPlaylist'
-import DetalhesPlaylist from '../src/pages/Musicas/DetalhesPlaylist'
+import DetalhesPlaylist from '../src/pages/DetalhesPlaylist/DetalhesPlaylist'
 
 
 class App extends Component {
@@ -37,9 +37,7 @@ class App extends Component {
         <Container>
         <Header><h1>Labefy</h1> </Header>
         <Main>
-      
         {this.selecionarPagina()}
-        
         </Main>
         <Footer>Sou um footer</Footer>
   </Container>
