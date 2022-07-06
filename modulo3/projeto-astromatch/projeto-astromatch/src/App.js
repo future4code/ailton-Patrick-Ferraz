@@ -5,6 +5,7 @@ import MatchHistory from './pags/MatchHistory/MatchHistory';
 import { useState } from 'react';
 import axios from "axios"
 import { aluno, url_base } from './components/constants';
+import {GlobalStyle} from './pags/Home/HomeStyled'
 
 function App() {
   const [currentScreen, setCurrentScreen] = useState("home")
@@ -46,6 +47,7 @@ function App() {
   return (
     <div>
       {changeScreen()}
+      <GlobalStyle/>
      
      
     </div>
