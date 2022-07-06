@@ -27,7 +27,7 @@ export default function Home(props) {
   const choosePerson = (profileId) => {
     const body = {
       id: profile.id,
-      choice: true,
+      choice: choise,
     };
     axios
       .post(`${url_base}/${aluno}/choose-person`, body)
@@ -44,7 +44,7 @@ export default function Home(props) {
   const dontChoosePerson = (id) => {
     const body = {
       id: profile.id,
-      choice: true,
+      choice: choise,
     };
     axios
       .post(`${url_base}/${aluno}/choose-person`, body)
