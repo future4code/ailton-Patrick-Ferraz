@@ -1,9 +1,11 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { url_base, aluno } from "../../components/constants";
-import { Container,CardProfile,ProfilePhoto,InfosProfile,BtnDislike,BtnLike } from "./HomeStyled";
+import { Container,Header,CardProfile,ProfilePhoto,InfosProfile,BtnDiv,BtnDislike,BtnLike,BtnClear,BtnMatchPage } from "./HomeStyled";
 import Like from "../../imgs/Like.png"
 import Dislike from "../../imgs/Dislike.png"
+import Clear from "../../imgs/Clear.png"
+import MatchPage from "../../imgs/MatchPage.png"
 
 
 export default function Home(props) {
@@ -64,10 +66,10 @@ export default function Home(props) {
   return (
     <Container>
     <CardProfile>
-      <div>
+      <Header>
       <h1>astroMatch</h1>
-      <button onClick={props.goToMatches}>Home</button>
-      </div>
+      <BtnMatchPage onClick={props.goToMatches}><img src={MatchPage}/></BtnMatchPage>
+      </Header>
     
       <ProfilePhoto src={profile.photo} alt="profile photo"></ProfilePhoto>
 
@@ -76,14 +78,16 @@ export default function Home(props) {
         <p>{profile.bio}</p>
       </InfosProfile>
 
-         <div>
+         <BtnDiv>
          <BtnDislike onClick={dontChoosePerson}><img src={Dislike}/></BtnDislike>
-        <bBtnLike onClick={choosePerson}><img src={Like}/></bBtnLike>
-          </div>     
+        <BtnLike onClick={choosePerson}><img src={Like}/></BtnLike>
+          </BtnDiv>     
   
     </CardProfile>
 
-    <button onClick={props.clear}>Clear</button>
+    <BtnClear onClick={props.clear} ><img src={Clear}/>
+    <span>Limpar swipes e matches</span>
+    </BtnClear>
     </Container>
   );
 }

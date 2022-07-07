@@ -8,7 +8,7 @@ import { aluno, url_base } from './components/constants';
 import {GlobalStyle} from './pags/Home/HomeStyled'
 
 function App() {
-  const [currentScreen, setCurrentScreen] = useState("home")
+  const [currentScreen, setCurrentScreen] = useState("homw")
 
  const changeScreen = () =>{
     switch(currentScreen){

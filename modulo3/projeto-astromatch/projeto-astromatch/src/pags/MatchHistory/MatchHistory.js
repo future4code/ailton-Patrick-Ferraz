@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { aluno, url_base } from '../../components/constants'
-import { ProfilePhoto } from './MatchHistoryStyled'
+import { Container,Header,CardMatchs, ProfilePhoto,InfosMatches,BntProfilePage,BtnClear } from './MatchHistoryStyled'
+import Clear from "../../imgs/Clear.png"
+import ProfilesPage from "../../imgs/ProfilesPage.png"
 
 export default function MatchHistory(props) {
 
@@ -24,19 +26,28 @@ export default function MatchHistory(props) {
 
   const peopleMatched = matches.map((person)=>{
     return <div key={person.id}>
-      <ProfilePhoto  src={person.photo}/>
-      <p>{person.name}</p>
-
-
+      <InfosMatches> <ProfilePhoto  src={person.photo}/>
+      <p>{person.name}</p></InfosMatches>
+     
     </div>
   })
 
   return (
-    <div><h1>MatchHistory</h1>
+    <Container>
+    <CardMatchs>
+      <Header>
+      <BntProfilePage onClick={props.goToHome}><img src={ProfilesPage}/></BntProfilePage>
+      <h1>MatchHistory</h1>
+      </Header>
+     
     {peopleMatched}
 
-<button onClick={props.goToHome}>Home</button>
-<button onClick={props.clear}>Clear</button>
-    </div>
+    </CardMatchs>
+
+    <BtnClear onClick={props.clear}><img src={Clear}/>
+    <span>Limpar swipes e matches</span>
+    </BtnClear>
+   
+    </Container>
   )
 }
