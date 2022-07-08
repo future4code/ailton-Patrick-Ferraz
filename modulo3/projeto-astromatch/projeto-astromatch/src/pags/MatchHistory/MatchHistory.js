@@ -20,7 +20,7 @@ export default function MatchHistory(props) {
       setMatchs(res.data.matches)
     })
     .catch((err)=>{
-      console.log(err)
+      alert("Erro ao tentar pegar lista de matches. Tente novamente.")
     })
   }
 
@@ -36,7 +36,7 @@ export default function MatchHistory(props) {
     <Container>
     <CardMatchs>
       <Header>
-      <BntProfilePage onClick={props.goToHome}><img src={ProfilesPage}/></BntProfilePage>
+      <BntProfilePage onClick={props.goToHome}><img src={ProfilesPage} alt="icon-go-to-Profile-page"/></BntProfilePage>
       <h1>MatchHistory</h1>
       </Header>
      
@@ -44,7 +44,7 @@ export default function MatchHistory(props) {
 
     </CardMatchs>
 
-    <BtnClear onClick={props.clear}><img src={Clear}/>
+    <BtnClear onClick={props.clear}><img src={Clear} alt="icon-Clear-Button"/>
     <span>Limpar swipes e matches</span>
     </BtnClear>
    

@@ -14,20 +14,21 @@ export default function Home(props) {
   const [choise,setChoise] = useState(false)
 
   useEffect(() => {
-    const getProfileToChoose = () => {
-      axios
-        .get(`${url_base}/${aluno}/person`)
-        .then((res) => {
-          console.log(res)
-          setProfile(res.data.profile);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    };
 
     getProfileToChoose();
   }, [idProfile]);
+
+  const getProfileToChoose = () => {
+    axios
+      .get(`${url_base}/${aluno}/person`)
+      .then((res) => {
+        
+        setProfile(res.data.profile);
+      })
+      .catch((err) => {
+        alert("Erro ao escolher perfil.")
+      });
+  };
 
   const choosePerson = (profileId) => {
     const body = {
@@ -37,6 +38,9 @@ export default function Home(props) {
     axios
       .post(`${url_base}/${aluno}/choose-person`, body)
       .then((res) => {
+        getProfileToChoose(aluno)
+        if(res.data.isMatch === true)
+        alert (`Parabéns! Você deu Match com ${profile.name}`)
         setIdProfile(profileId)
         setChoise(true);
       })
@@ -44,7 +48,6 @@ export default function Home(props) {
         console.log(err);
       });
   };
-
 
   const dontChoosePerson = (id) => {
     const body = {
@@ -59,16 +62,17 @@ export default function Home(props) {
 
       })
       .catch((err) => {
-        console.log(err);
       });
   };
 
   return (
     <Container>
+
     <CardProfile>
+
       <Header>
       <h1>astroMatch</h1>
-      <BtnMatchPage onClick={props.goToMatches}><img src={MatchPage}/></BtnMatchPage>
+      <BtnMatchPage onClick={props.goToMatches}><img src={MatchPage} alt="icon-go-to-Match-Page"/></BtnMatchPage>
       </Header>
     
       <ProfilePhoto src={profile.photo} alt="profile photo"></ProfilePhoto>
@@ -79,15 +83,16 @@ export default function Home(props) {
       </InfosProfile>
 
          <BtnDiv>
-         <BtnDislike onClick={dontChoosePerson}><img src={Dislike}/></BtnDislike>
-        <BtnLike onClick={choosePerson}><img src={Like}/></BtnLike>
+         <BtnDislike onClick={dontChoosePerson}><img src={Dislike} alt="icon-Dislike-Button"/></BtnDislike>
+        <BtnLike onClick={choosePerson}><img src={Like} alt="icon-Like-Button"/></BtnLike>
           </BtnDiv>     
   
     </CardProfile>
 
-    <BtnClear onClick={props.clear} ><img src={Clear}/>
+    <BtnClear onClick={props.clear} ><img src={Clear} alt="icon-Clear-Button"/>
     <span>Limpar swipes e matches</span>
     </BtnClear>
+
     </Container>
   );
 }
