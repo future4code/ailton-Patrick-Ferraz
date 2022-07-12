@@ -4,6 +4,8 @@ import { useRequestData } from '../../Hooks/useRequestData'
 import { base_URL,aluno } from '../../constants/constants'
 import Select from 'react-select'
 import countryList from 'react-select-country-list'
+import { useNavigate } from 'react-router-dom'
+import { backOnePage } from '../../Routes/coordinator'
 
 
 export default function ApplicationFormPage(props) {
@@ -14,6 +16,8 @@ export default function ApplicationFormPage(props) {
   const [applicationText,setApplocationText] = useState("")
   const [profession,setProfession] = useState("")
   const [value, setValue] = useState('')
+  
+  const navigate = useNavigate()
 
   const trips = useRequestData(`${base_URL}/${aluno}/trips`);
 
@@ -81,7 +85,7 @@ const CountrySelector = () => {
        <input type={"text"} placeholder='Profissão' onChange={handleProfession}/>
        {CountrySelector()}
       
-      <button onClick={props.goToListTripsPage}>Voltar</button>
+      <button onClick={()=>{backOnePage(navigate)}}>Voltar</button>
       <button onClick={applyToTrip}>Inscrever-se</button>
       </div>
   )
