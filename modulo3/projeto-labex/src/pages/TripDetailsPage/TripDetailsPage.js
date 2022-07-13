@@ -11,8 +11,9 @@ export default function TripDetailsPage() {
   const params = useParams();
   const idTrip = params.id;
   const [details, setDetails] = useState("");
-
   const token = localStorage.getItem("token");
+  const navigate = useNavigate();
+
   useEffect(() => {
     axios
       .get(`${base_URL}/${aluno}/trip/${idTrip}`, {
@@ -21,15 +22,13 @@ export default function TripDetailsPage() {
         },
       })
       .then((res) => {
-        console.log(res.data.trip);
         setDetails(res.data.trip)
       })
       .catch((err) => {
         console.log(err.response);
       });
   }, []);
-  const navigate = useNavigate();
-
+ 
   return (
     <div>
       <h1> TripDetailsPage</h1>
