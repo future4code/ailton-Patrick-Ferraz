@@ -7,6 +7,9 @@ import countryList from "react-select-country-list";
 import { useNavigate } from "react-router-dom";
 import { backOnePage } from "../../Routes/coordinator";
 import useForm from "../../Hooks/useForm";
+import Header from "../../constants/Header";
+import Footer from "../../constants/Footer";
+import { Body, Container } from "../../Components/components";
 
 export default function ApplicationFormPage(props) {
   const [trip, setTrip] = useState({});
@@ -65,7 +68,9 @@ const apply = (e) =>{
   };
 
   return (
-    <div>
+    <Container>
+      <Header/>
+      <Body>
       <h1>Inscreva-se para uma viagem</h1>
       <form onSubmit={apply}>
         <select onChange={tripChange}>
@@ -128,6 +133,8 @@ const apply = (e) =>{
       >
         Voltar
       </button>
-    </div>
+      </Body>
+      <Footer/>
+    </Container>
   );
 }

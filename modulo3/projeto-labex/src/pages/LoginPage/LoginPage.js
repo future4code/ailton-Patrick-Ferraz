@@ -4,6 +4,9 @@ import { goToHomePage } from "../../Routes/coordinator";
 import axios from "axios";
 import { aluno, base_URL } from "../../constants/constants";
 import useForm from "../../Hooks/useForm";
+import Header from "../../constants/Header";
+import Footer from "../../constants/Footer";
+import { Body, Container } from "../../Components/components";
 
 export default function LoginPage() {
   const { form, onChange } = useForm({
@@ -26,7 +29,9 @@ export default function LoginPage() {
   };
 
   return (
-    <div>
+    <Container>
+      <Header/>
+      <Body>
       <h1>LoginPage</h1>
       <form onSubmit={onSubmitLogin}>
         <input
@@ -48,6 +53,8 @@ export default function LoginPage() {
         <button>Login</button>
       </form>
       <button onClick={() => goToHomePage(navigate)}>Voltar</button>
-    </div>
+      </Body>
+      <Footer/>
+    </Container>
   );
 }

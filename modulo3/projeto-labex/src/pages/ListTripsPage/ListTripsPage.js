@@ -5,6 +5,9 @@ import {CardTrips} from './styled'
 import { useNavigate } from 'react-router-dom'
 import { backOnePage } from '../../Routes/coordinator'
 import { goToApplicationFormPage } from '../../Routes/coordinator'
+import Header from '../../constants/Header'
+import Footer from '../../constants/Footer'
+import { Body, ContainerDetails } from '../../Components/components'
 
 export default function ListTripsPage(props) {
 
@@ -27,12 +30,16 @@ export default function ListTripsPage(props) {
   });
 
   return (
-    <div>
+    <ContainerDetails>
+      <Header/>
+      <Body>
       <h1>Lista de viagens</h1>
       <button onClick={()=>backOnePage(navigate)}>Voltar</button>
       <button onClick={()=>goToApplicationFormPage(navigate)}>Increver-se</button>
       {tripsList}
+      </Body>
+      <Footer/>
      
-    </div>
+    </ContainerDetails>
   )
 }

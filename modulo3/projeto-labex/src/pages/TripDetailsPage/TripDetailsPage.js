@@ -5,6 +5,9 @@ import { useEffect } from "react";
 import axios from "axios";
 import { base_URL, aluno } from "../../constants/constants";
 import useProtectedPage from "../../Hooks/useProtectedPage";
+import Header from "../../constants/Header"
+import Footer from "../../constants/Footer"
+import { Body, ContainerDetails } from "../../Components/components";
 
 export default function TripDetailsPage() {
   useProtectedPage();
@@ -95,7 +98,9 @@ export default function TripDetailsPage() {
     });
 
   return (
-    <div>
+    <ContainerDetails>
+      <Header/>
+      <Body>
       <h1> TripDetailsPage</h1>
       <div>
         <h3>{details.name}</h3>
@@ -112,8 +117,9 @@ export default function TripDetailsPage() {
         <h4>Candidatos Aprovados</h4>
         {approvedCandidates}
       </div>
-
       <button onClick={() => backOnePage(navigate)}>Voltar</button>
-    </div>
+      </Body>
+      <Footer/>
+    </ContainerDetails>
   );
 }

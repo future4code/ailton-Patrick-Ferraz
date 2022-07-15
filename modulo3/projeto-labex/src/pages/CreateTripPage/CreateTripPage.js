@@ -5,6 +5,9 @@ import { backOnePage } from "../../Routes/coordinator";
 import { aluno, base_URL } from "../../constants/constants";
 import axios from "axios";
 import useForm from "../../Hooks/useForm";
+import Header from "../../constants/Header";
+import Footer from "../../constants/Footer";
+import { Body, Container } from "../../Components/components";
 
 export default function CreateTripPage() {
   useProtectedPage();
@@ -36,7 +39,9 @@ export default function CreateTripPage() {
   };
 
   return (
-    <div>
+    <Container>
+      <Header/>
+      <Body>
       <h1>CreateTripPage</h1>
       <form onSubmit={createTrip}>
         <input
@@ -95,6 +100,8 @@ export default function CreateTripPage() {
         <button>Criar</button>
       </form>
       <button onClick={() => backOnePage(navigate)}>Voltar</button>
-    </div>
+      </Body>
+      <Footer/>
+    </Container>
   );
 }
