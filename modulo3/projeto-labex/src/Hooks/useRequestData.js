@@ -1,15 +1,21 @@
 import axios from "axios";
 import { useState,useEffect } from "react";
+import { base_URL,aluno } from '../constants/constants'
+
 
 export const useRequestData = (url) =>{
-const [data,setData] = useState (undefined);
-
+const [data,setData] = useState ("");
+const token = localStorage.getItem("token")
 
 useEffect(()=>{
-    axios.get(url)
-    .then((res)=>{setData(res.data.trips)})
-    .catch((err)=>{console.log(err)})
+    getTrips(url)
 },[url]);
 
-return data
+const getTrips = (url) =>{
+    axios.get(url)
+.then((res)=>{setData(res.data.trips)})
+.catch(()=>{})
+}
+
+return [data,getTrips]
 }

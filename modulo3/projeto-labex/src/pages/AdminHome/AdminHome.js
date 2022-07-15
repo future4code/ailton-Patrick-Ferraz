@@ -6,35 +6,40 @@ import { base_URL,aluno } from '../../constants/constants'
 import useProtectedPage from '../../Hooks/useProtectedPage'
 import axios from 'axios'
 
+
 export default function AdminHome() {
 
   const navigate = useNavigate()
-  const trip =  useRequestData(`${base_URL}/${aluno}/trips`);
+  const [trip,getTrips] =  useRequestData(`${base_URL}/${aluno}/trips`);
   const token = localStorage.getItem("token")
   const params = useParams();
-  const idTrip = params.id;
+  const tripId = params.id;
+  
 
   useProtectedPage()
 
-  const deleteTrip = () =>{
-    axios.delete(`${base_URL}/${aluno}/trips/${idTrip}`,{
+
+  const deleteTrip = (tripId) =>{
+    axios.delete(`${base_URL}/${aluno}/trips/${tripId}`,{
       headers:{
         auth:token
       }
     }).then((res)=>{
       console.log(res.data)
-      
+      getTrips(`${base_URL}/${aluno}/trips`)
     })
     .catch((err)=>{
       console.log(err)
     })
   }
+
+
   
 const tripList = trip && trip.map((trip)=>{
   return <div  key={trip.id}>
     <p>{trip.name}</p>
     <button onClick={()=>navigate(`/admin/trips/${trip.id}`)}>Ver Detalhes</button>
-    <button onClick={()=>deleteTrip()}>Delete</button>
+    <button onClick={()=>deleteTrip(trip.id)}>Delete</button>
   </div>
 })
 

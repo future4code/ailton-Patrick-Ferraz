@@ -7,7 +7,7 @@ import { base_URL, aluno } from "../../constants/constants";
 import useProtectedPage from "../../Hooks/useProtectedPage";
 
 export default function TripDetailsPage() {
-  useProtectedPage()
+  useProtectedPage();
   const params = useParams();
   const idTrip = params.id;
   const [details, setDetails] = useState("");
@@ -15,6 +15,10 @@ export default function TripDetailsPage() {
   const navigate = useNavigate();
 
   useEffect(() => {
+    tripDetails();
+  }, []);
+
+  const tripDetails = () => {
     axios
       .get(`${base_URL}/${aluno}/trip/${idTrip}`, {
         headers: {
@@ -22,13 +26,74 @@ export default function TripDetailsPage() {
         },
       })
       .then((res) => {
-        setDetails(res.data.trip)
+        setDetails(res.data.trip);
+      })
+      .catch(() => {
+      });
+  };
+
+  const decidePerson = (id,approve) => {
+    const body = {
+      approve: approve,
+    };
+    axios
+      .put(
+        `${base_URL}/${aluno}/trips/${idTrip}/candidates/${id}/decide`,
+        body,
+        {
+          headers: {
+            auth: token,
+          },
+        }
+      )
+      .then((res) => {
+        tripDetails();
       })
       .catch((err) => {
-        console.log(err.response);
+        console.log(err);
       });
-  }, []);
- 
+  };
+
+  const candidates =
+    details.candidates &&
+    details.candidates.map((person) => {
+      return (
+        <div>
+          <p>Nome: {person.name}</p>
+          <p>Idade: {person.age}</p>
+          <p>Profissão: {person.profession}</p>
+          <p>País: {person.country}</p>
+          <p>Texto de candidatura: {person.applicationText}</p>
+          <div>
+            <button
+              onClick={() => {
+                decidePerson(person.id,true);
+              }}
+            >
+              Aceitar
+            </button>
+            <button   onClick={() => {
+                decidePerson(person.id,false);
+              }}> Dispensar</button>
+          </div>
+        </div>
+      );
+    });
+
+  const approvedCandidates =
+    details.approved &&
+    details.approved.map((person) => {
+      return (
+        <div>
+          <p>Nome: {person.name}</p>
+          <p>Idade: {person.age}</p>
+          <p>Profissão: {person.profession}</p>
+          <p>País: {person.country}</p>
+          <p>Texto de candidatura: {person.applicationText}</p>
+        </div>
+      );
+    });
+
   return (
     <div>
       <h1> TripDetailsPage</h1>
@@ -38,8 +103,16 @@ export default function TripDetailsPage() {
         <p>Planeta: {details.planet}</p>
         <p>Duração em dias: {details.durationInDays}</p>
         <p>Data: {details.date}</p>
-
       </div>
+      <div>
+        <h4>Candidatos Pendentes</h4>
+        {candidates}
+      </div>
+      <div>
+        <h4>Candidatos Aprovados</h4>
+        {approvedCandidates}
+      </div>
+
       <button onClick={() => backOnePage(navigate)}>Voltar</button>
     </div>
   );

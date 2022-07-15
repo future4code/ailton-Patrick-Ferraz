@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { aluno, base_URL } from '../../constants/constants'
 import { useRequestData } from '../../Hooks/useRequestData'
 import {CardTrips} from './styled'
@@ -8,9 +8,13 @@ import { goToApplicationFormPage } from '../../Routes/coordinator'
 
 export default function ListTripsPage(props) {
 
+  useEffect(()=>{
+    getTrips()
+  },[])
+
   const navigate = useNavigate()
 
-  const trips = useRequestData(`${base_URL}/${aluno}/trips`);
+  const [trips,getTrips] = useRequestData(`${base_URL}/${aluno}/trips`);
 
   const tripsList = trips && trips.map((trip)=>{
     return <CardTrips key={trip.id}>

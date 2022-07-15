@@ -1,92 +1,133 @@
-import axios from 'axios'
-import React, {useState,useMemo} from 'react'
-import { useRequestData } from '../../Hooks/useRequestData'
-import { base_URL,aluno } from '../../constants/constants'
-import Select from 'react-select'
-import countryList from 'react-select-country-list'
-import { useNavigate } from 'react-router-dom'
-import { backOnePage } from '../../Routes/coordinator'
-
+import axios from "axios";
+import React, { useState, useMemo } from "react";
+import { useRequestData } from "../../Hooks/useRequestData";
+import { base_URL, aluno } from "../../constants/constants";
+import Select from "react-select";
+import countryList from "react-select-country-list";
+import { useNavigate } from "react-router-dom";
+import { backOnePage } from "../../Routes/coordinator";
+import useForm from "../../Hooks/useForm";
 
 export default function ApplicationFormPage(props) {
-  const [trip,setTrip] = useState({})
-  const [tripId,setTripId] = useState("")
-  const [name,setName] = useState("")
-  const [age,setAge] = useState("")
-  const [applicationText,setApplocationText] = useState("")
-  const [profession,setProfession] = useState("")
-  const [value, setValue] = useState('')
-  
-  const navigate = useNavigate()
+  const [trip, setTrip] = useState({});
+  const [tripId, setTripId] = useState("");
+  const [value, setValue] = useState("");
+  const { form, setForm,onChange } = useForm({
+    name: "",
+    age: "",
+    applicationText: "",
+    profession: "",
+  });
 
-  const trips = useRequestData(`${base_URL}/${aluno}/trips`);
+  const navigate = useNavigate();
 
- const applyToTrip = (id) =>{
-  const body = {
-    name:name,
-    age:age,
-    applicationText:applicationText,
-    profession:profession,
-    country:value.label
-  }
+  const [trips, getTrips] = useRequestData(`${base_URL}/${aluno}/trips`);
 
-  axios.post(`${base_URL}/${aluno}/trips/${tripId}/apply`,body)
-  .then((res)=>alert('Inscrição realizada com sucesso.'))
-  .catch((err)=>alert('Inscrição não realizada. Tente'))
- }
+  const applyToTrip = (e) => {
+   
+    axios
+      .post(`${base_URL}/${aluno}/trips/${tripId}/apply`, {
+        ...form,
+        country: value.label,
+      })
+      .then(() => alert("Inscrição realizada com sucesso."))
+      .catch(() => alert("Inscrição não realizada. Tente novamente."));
+  };
 
-const tripChange = (e)=>{
-  setTrip(e.target.value)
-  setTripId(e.target.value)
+const apply = (e) =>{
+  e.preventDefault();
+  applyToTrip()
+  setForm({name:"", age:"", applicationText:"", profession:""})
+  setValue("")
 }
 
-const handleName = (e) =>{
-setName(e.target.value)
-}
+  const tripChange = (e) => {
+    setTrip(e.target.value);
+    setTripId(e.target.value);
+  };
 
-const handleAge = (e) =>{
-setAge(e.target.value)
-}
+  const CountrySelector = (e) => {
+    const options = useMemo(() => countryList().getData(), []);
 
-const handleApplicationText = (e) =>{
-setApplocationText(e.target.value)
-}
+    const changeHandler = (value) => {
+      setValue(value);
+    };
 
-const handleProfession = (e) =>{
-setProfession(e.target.value)
-}
-
-const CountrySelector = () => {
-  const options = useMemo(() => countryList().getData(), [])
-
-  const changeHandler = value => {
-    setValue(value)
-  }
-
-  return <Select className="country" options={options} value={value} onChange={changeHandler} />
-}
+    return (
+      <Select
+        className="country"
+        options={options}
+        value={value}
+        onChange={changeHandler}
+        required
+      />
+    );
+  };
 
   return (
     <div>
       <h1>Inscreva-se para uma viagem</h1>
-       <select onChange={tripChange}>
-        <option value={""}>Nenhuma</option>
-        {trips && trips.map((trip)=>{
-          return (
-            <option key={trip.name} value={trip.id}>
-              {trip.name}
-            </option>
-          )
-        })}
-       </select>
-       <input type={"text"} placeholder="Nome" onChange={handleName}/>
-       <input type={"number"} min="18" placeholder='Idade' onChange={handleAge}/>
-       <input type={"text"} placeholder='Texto de candidatura' onChange={handleApplicationText}/>
-       <input type={"text"} placeholder='Profissão' onChange={handleProfession}/>
-       {CountrySelector()}
-      
-      <button onClick={()=>{backOnePage(navigate)}}>Voltar</button>
-      <button onClick={applyToTrip}>Inscrever-se</button>
-      </div>
-  )
+      <form onSubmit={apply}>
+        <select onChange={tripChange}>
+          <option value={""}>Nenhuma</option>
+          {trips &&
+            trips.map((trip) => {
+              return (
+                <option key={trip.name} value={trip.id}>
+                  {trip.name} - {trip.planet}
+                </option>
+              );
+            })}
+        </select>
+        <input
+          name={"name"}
+          value={form.name}
+          type={"text"}
+          placeholder="Nome"
+          onChange={onChange}
+          required
+          pattern={"^.{3,}"}
+          title={"O nome deve ter no mínimo 3 letras"}
+        />
+        <input
+          name={"age"}
+          value={form.age}
+          type={"number"}
+          min="18"
+          placeholder="Idade"
+          onChange={onChange}
+          required
+        />
+        <input
+          name={"applicationText"}
+          value={form.applicationText}
+          type={"text"}
+          placeholder="Texto de candidatura"
+          onChange={onChange}
+          required
+          pattern={"^.{30,}"}
+          title={"O texto de candidatura deve ter mais de 30 caracteres"}
+        />
+        <input
+          name={"profession"}
+          value={form.profession}
+          type={"text"}
+          placeholder="Profissão"
+          onChange={onChange}
+          required
+          pattern={"^.{10,}"}
+          title={"A profissão dever ter no mínimo 10 caracteres"}
+        />
+        {CountrySelector()}
+        <button>Inscrever-se</button>
+      </form>
+      <button
+        onClick={() => {
+          backOnePage(navigate);
+        }}
+      >
+        Voltar
+      </button>
+    </div>
+  );
 }
