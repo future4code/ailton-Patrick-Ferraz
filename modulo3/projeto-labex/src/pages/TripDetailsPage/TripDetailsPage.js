@@ -7,7 +7,7 @@ import { base_URL, aluno } from "../../constants/constants";
 import useProtectedPage from "../../Hooks/useProtectedPage";
 import Header from "../../constants/Header"
 import Footer from "../../constants/Footer"
-import { Body, ContainerDetails } from "../../Components/components";
+import { BodyDetails,CardDetails,ApprovedCandidates,BtnBack,Title} from "./styled";
 
 export default function TripDetailsPage() {
   useProtectedPage();
@@ -98,10 +98,11 @@ export default function TripDetailsPage() {
     });
 
   return (
-    <ContainerDetails>
+    <div>
       <Header/>
-      <Body>
-      <h1> TripDetailsPage</h1>
+      <BodyDetails>
+      <CardDetails>
+      <Title> TripDetailsPage</Title>
       <div>
         <h3>{details.name}</h3>
         <p>Detalhes da Viagem: {details.description}</p>
@@ -113,13 +114,14 @@ export default function TripDetailsPage() {
         <h4>Candidatos Pendentes</h4>
         {candidates}
       </div>
-      <div>
+      <ApprovedCandidates>
         <h4>Candidatos Aprovados</h4>
         {approvedCandidates}
-      </div>
-      <button onClick={() => backOnePage(navigate)}>Voltar</button>
-      </Body>
+      </ApprovedCandidates>
+      <BtnBack  onClick={() => backOnePage(navigate)}>Voltar</BtnBack>
+      </CardDetails>
+      </BodyDetails>
       <Footer/>
-    </ContainerDetails>
+    </div>
   );
 }

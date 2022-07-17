@@ -7,7 +7,7 @@ import useProtectedPage from '../../Hooks/useProtectedPage'
 import axios from 'axios'
 import Header from '../../constants/Header'
 import Footer from '../../constants/Footer'
-import { Body, Container } from '../../Components/components'
+import{BodyAdmin,TriplistAdmin,CardAdmin, DivBtn, Title,BtnCreateTrip,BtnBack,BtnLogout,BtnDelete,BtnDetails } from "./styled"
 
 
 export default function AdminHome() {
@@ -39,26 +39,29 @@ export default function AdminHome() {
 
   
 const tripList = trip && trip.map((trip)=>{
-  return <div  key={trip.id}>
+  return <TriplistAdmin  key={trip.id}>
     <p>{trip.name}</p>
-    <button onClick={()=>navigate(`/admin/trips/${trip.id}`)}>Ver Detalhes</button>
-    <button onClick={()=>deleteTrip(trip.id)}>Delete</button>
-  </div>
+    <BtnDetails onClick={()=>navigate(`/admin/trips/${trip.id}`)}>Ver Detalhes</BtnDetails>
+    <BtnDelete  onClick={()=>deleteTrip(trip.id)}>Delete</BtnDelete>
+  </TriplistAdmin>
 })
 
   return (
-    <Container>
-      <Header/>
-      <Body>
-      <h1>AdminHome</h1>
-      <button onClick={()=>backOnePage(navigate)}>Voltar</button>
-      <button onClick={()=>goToCreateTripPage(navigate)}>Criar Viagem</button>
-      <button onClick={()=>goToLoginPage(navigate)}>Logout</button>
       <div>
+      <Header/>
+      <BodyAdmin>
+      <CardAdmin>
+      <Title>AdminHome</Title>
+      <DivBtn>
+      <BtnBack onClick={()=>backOnePage(navigate)}>Voltar</BtnBack>
+      <BtnCreateTrip onClick={()=>goToCreateTripPage(navigate)}>Criar Viagem</BtnCreateTrip>
+      <BtnLogout onClick={()=>goToLoginPage(navigate)}>Logout</BtnLogout>
+      </DivBtn>
       {tripList}
-      </div>
-      </Body>
+      </CardAdmin>
+      </BodyAdmin>
       <Footer/>
-      </Container>
+    </div>
+      
   )
 }

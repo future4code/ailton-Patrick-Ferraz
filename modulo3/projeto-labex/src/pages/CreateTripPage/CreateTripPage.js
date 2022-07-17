@@ -7,7 +7,8 @@ import axios from "axios";
 import useForm from "../../Hooks/useForm";
 import Header from "../../constants/Header";
 import Footer from "../../constants/Footer";
-import { Body, Container } from "../../Components/components";
+import { CardCreateTrip } from "./styled";
+import { Form,Title,BtnBack,BtnSubmit,BodyCreateTrip} from "./styled";
 
 export default function CreateTripPage() {
   useProtectedPage();
@@ -39,11 +40,12 @@ export default function CreateTripPage() {
   };
 
   return (
-    <Container>
+    <div>
       <Header/>
-      <Body>
-      <h1>CreateTripPage</h1>
-      <form onSubmit={createTrip}>
+      <BodyCreateTrip>
+      <CardCreateTrip>
+      <Title>Criar Viagem</Title>
+      <Form onSubmit={createTrip}>
         <input
           name={"name"}
           type={"text"}
@@ -97,11 +99,13 @@ export default function CreateTripPage() {
           required
 
         ></input>
-        <button>Criar</button>
-      </form>
-      <button onClick={() => backOnePage(navigate)}>Voltar</button>
-      </Body>
+        <BtnSubmit>Criar</BtnSubmit>
+      </Form>
+      <BtnBack  onClick={() => backOnePage(navigate)}>Voltar</BtnBack>
+      </CardCreateTrip >
+      
+      </BodyCreateTrip>
       <Footer/>
-    </Container>
+    </div>
   );
 }

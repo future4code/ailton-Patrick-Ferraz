@@ -1,15 +1,16 @@
 import React, { useEffect } from 'react'
 import { aluno, base_URL } from '../../constants/constants'
 import { useRequestData } from '../../Hooks/useRequestData'
-import {CardTrips} from './styled'
+import {CardTrips, Title} from './styled'
 import { useNavigate } from 'react-router-dom'
 import { backOnePage } from '../../Routes/coordinator'
 import { goToApplicationFormPage } from '../../Routes/coordinator'
 import Header from '../../constants/Header'
 import Footer from '../../constants/Footer'
-import { Body, ContainerDetails } from '../../Components/components'
+import { Body } from '../../Components/components'
+import { CardTripList,DivBtnTripPage,BtnBack,BtnSingUp } from './styled'
 
-export default function ListTripsPage(props) {
+export default function ListTripsPage() {
 
   useEffect(()=>{
     getTrips()
@@ -30,16 +31,20 @@ export default function ListTripsPage(props) {
   });
 
   return (
-    <ContainerDetails>
+    <div>
       <Header/>
       <Body>
-      <h1>Lista de viagens</h1>
-      <button onClick={()=>backOnePage(navigate)}>Voltar</button>
-      <button onClick={()=>goToApplicationFormPage(navigate)}>Increver-se</button>
+        <CardTripList>
+      <Title>Lista de viagens</Title>
+      <DivBtnTripPage>
+      <BtnBack onClick={()=>backOnePage(navigate)}>Voltar</BtnBack>
+      <BtnSingUp onClick={()=>goToApplicationFormPage(navigate)}>Increver-se</BtnSingUp>
+      </DivBtnTripPage>
       {tripsList}
+      </CardTripList>
       </Body>
       <Footer/>
      
-    </ContainerDetails>
+    </div>
   )
 }

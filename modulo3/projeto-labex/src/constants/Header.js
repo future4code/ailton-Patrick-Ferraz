@@ -6,7 +6,7 @@ export const Head = styled.div`
 display:flex;
 background-color: purple;
 height: 15vh;
-width: 100vw;
+width: 100%;
 align-items: center;
 justify-content: center;
 `

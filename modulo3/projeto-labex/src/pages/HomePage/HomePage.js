@@ -8,7 +8,7 @@ import {
 } from "./styledHome";
 import { useNavigate } from "react-router-dom";
 import { goToListTripsPage, goToLoginPage } from "../../Routes/coordinator";
-import { Body, Container } from "../../Components/components";
+import { Body } from "../../Components/components";
 import Header from "../../constants/Header";
 import Footer from "../../constants/Footer";
 import AstroHome from "../../Imgs/AstroHome.png";
@@ -18,7 +18,7 @@ export default function HomePage() {
   const navigate = useNavigate();
 
   return (
-    <Container>
+    <div>
       <Header/>
       <Body>
         <ImgHomeLogo src={AstroHome} />
@@ -29,9 +29,9 @@ export default function HomePage() {
           </BtnHome>
           <BtnHome onClick={() => goToLoginPage(navigate)}>Login</BtnHome>
         </DivBtnHomePage>
-      </Body>
+        </Body>
       <Footer/>
-
-    </Container>
+     
+    </div>
   );
 }

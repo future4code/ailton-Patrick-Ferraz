@@ -8,13 +8,14 @@ flex-direction: column;
 justify-content: center;
 align-items: center;
 margin: 20px 0px;
-height: 100%;
+height: 100vh;
 `
 export const Container = styled.div`
 height: 100vh;
+
 `
 export const ContainerDetails = styled.div`
-height:100%
+height:100%;
 `
 
 export const GlobalStyle = createGlobalStyle`

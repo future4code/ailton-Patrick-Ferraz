@@ -19,7 +19,7 @@ align-items: center;
 justify-content: space-between;
 background-color: black;
 height: 15vh;
-width: 100vw;
+width: 100%;
 color:white;
 `
 

@@ -4,7 +4,8 @@ export const DivBtnHomePage = styled.div`
 display: flex;
 max-width:100vh;
 max-height: 50%;
-gap:4vw;
+gap:10vw;
+margin-top: 50px;
 `
 
 export const ImgHomeLogo = styled.img`
@@ -16,8 +17,13 @@ export const BtnHome = styled.button`
 background-color: purple;
 border-radius: 30px;
 border: none;
-max-width: 100%;
-max-height: 100%;
+width: 100px;
+height: 50px;
+:hover{
+    cursor: pointer;
+    background-color: black;
+    color:white;
+}
 
 
 `

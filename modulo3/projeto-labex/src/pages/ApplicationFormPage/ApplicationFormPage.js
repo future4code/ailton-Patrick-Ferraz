@@ -9,7 +9,7 @@ import { backOnePage } from "../../Routes/coordinator";
 import useForm from "../../Hooks/useForm";
 import Header from "../../constants/Header";
 import Footer from "../../constants/Footer";
-import { Body, Container } from "../../Components/components";
+import { BodySingUp,CardSingUp,Form,Title,BtnSubmit,BtnBack } from "./styled";
 
 export default function ApplicationFormPage(props) {
   const [trip, setTrip] = useState({});
@@ -68,11 +68,12 @@ const apply = (e) =>{
   };
 
   return (
-    <Container>
+    <div>
       <Header/>
-      <Body>
-      <h1>Inscreva-se para uma viagem</h1>
-      <form onSubmit={apply}>
+      <BodySingUp>
+        <CardSingUp>
+      <Title >Inscreva-se para uma viagem</Title>
+      <Form onSubmit={apply}>
         <select onChange={tripChange}>
           <option value={""}>Nenhuma</option>
           {trips &&
@@ -124,17 +125,18 @@ const apply = (e) =>{
           title={"A profissão dever ter no mínimo 10 caracteres"}
         />
         {CountrySelector()}
-        <button>Inscrever-se</button>
-      </form>
-      <button
+        <BtnSubmit>Inscrever-se</BtnSubmit>
+      </Form>
+      <BtnBack
         onClick={() => {
           backOnePage(navigate);
         }}
       >
         Voltar
-      </button>
-      </Body>
+      </BtnBack>
+      </CardSingUp>
+      </BodySingUp>
       <Footer/>
-    </Container>
+    </div>
   );
 }

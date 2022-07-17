@@ -6,7 +6,8 @@ import { aluno, base_URL } from "../../constants/constants";
 import useForm from "../../Hooks/useForm";
 import Header from "../../constants/Header";
 import Footer from "../../constants/Footer";
-import { Body, Container } from "../../Components/components";
+import { CardLogin,BtnSubmit,Form,Title,BtnBack,BodyLogin } from "./styled";
+import { Body } from "../../Components/components";
 
 export default function LoginPage() {
   const { form, onChange } = useForm({
@@ -29,11 +30,13 @@ export default function LoginPage() {
   };
 
   return (
-    <Container>
+    <div>
+      
       <Header/>
-      <Body>
-      <h1>LoginPage</h1>
-      <form onSubmit={onSubmitLogin}>
+      <BodyLogin>
+      <CardLogin>
+      <Title>LoginPage</Title>
+      <Form onSubmit={onSubmitLogin}>
         <input
           name={"email"}
           type={"email"}
@@ -50,11 +53,13 @@ export default function LoginPage() {
           placeholder="Senha"
           required
         />
-        <button>Login</button>
-      </form>
-      <button onClick={() => goToHomePage(navigate)}>Voltar</button>
-      </Body>
+        <BtnSubmit>Login</BtnSubmit>
+      </Form>
+      <BtnBack onClick={() => goToHomePage(navigate)}>Voltar</BtnBack>
+      </CardLogin>
+      </BodyLogin>
       <Footer/>
-    </Container>
+      
+    </div>
   );
 }
