@@ -32,15 +32,6 @@ border-radius: 25px;
 }
 `
 
-export const BodyCreateTrip = styled.div`
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
-margin: 20px 0px;
-height: 100vh;
-`
-
 export const BtnBack = styled.button`
 background-color: purple;
 width: 100px;

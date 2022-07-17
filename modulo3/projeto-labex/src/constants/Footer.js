@@ -21,6 +21,7 @@ background-color: black;
 height: 15vh;
 width: 100%;
 color:white;
+flex-shrink: 0;
 `
 
 const SocialMedias = styled.div`

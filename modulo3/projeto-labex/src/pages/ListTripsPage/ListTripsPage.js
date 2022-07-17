@@ -1,14 +1,13 @@
 import React, { useEffect } from 'react'
 import { aluno, base_URL } from '../../constants/constants'
 import { useRequestData } from '../../Hooks/useRequestData'
-import {CardTrips, Title} from './styled'
 import { useNavigate } from 'react-router-dom'
 import { backOnePage } from '../../Routes/coordinator'
 import { goToApplicationFormPage } from '../../Routes/coordinator'
 import Header from '../../constants/Header'
 import Footer from '../../constants/Footer'
-import { Body } from '../../Components/components'
-import { CardTripList,DivBtnTripPage,BtnBack,BtnSingUp } from './styled'
+import { Body, Container } from '../../Components/components'
+import { CardTripList,DivBtnTripPage,BtnBack,BtnSingUp,CardTrips,Title } from './styled'
 
 export default function ListTripsPage() {
 
@@ -31,7 +30,7 @@ export default function ListTripsPage() {
   });
 
   return (
-    <div>
+    <Container>
       <Header/>
       <Body>
         <CardTripList>
@@ -44,7 +43,6 @@ export default function ListTripsPage() {
       </CardTripList>
       </Body>
       <Footer/>
-     
-    </div>
+    </Container>
   )
 }

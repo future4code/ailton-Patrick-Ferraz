@@ -9,7 +9,8 @@ import { backOnePage } from "../../Routes/coordinator";
 import useForm from "../../Hooks/useForm";
 import Header from "../../constants/Header";
 import Footer from "../../constants/Footer";
-import { BodySingUp,CardSingUp,Form,Title,BtnSubmit,BtnBack } from "./styled";
+import { CardSingUp,Form,Title,BtnSubmit,BtnBack } from "./styled";
+import { Body, Container } from "../../Components/components";
 
 export default function ApplicationFormPage(props) {
   const [trip, setTrip] = useState({});
@@ -24,7 +25,7 @@ export default function ApplicationFormPage(props) {
 
   const navigate = useNavigate();
 
-  const [trips, getTrips] = useRequestData(`${base_URL}/${aluno}/trips`);
+  const [trips] = useRequestData(`${base_URL}/${aluno}/trips`);
 
   const applyToTrip = (e) => {
    
@@ -68,9 +69,9 @@ const apply = (e) =>{
   };
 
   return (
-    <div>
+    <Container>
       <Header/>
-      <BodySingUp>
+      <Body>
         <CardSingUp>
       <Title >Inscreva-se para uma viagem</Title>
       <Form onSubmit={apply}>
@@ -135,8 +136,8 @@ const apply = (e) =>{
         Voltar
       </BtnBack>
       </CardSingUp>
-      </BodySingUp>
+      </Body>
       <Footer/>
-    </div>
+    </Container>
   );
 }

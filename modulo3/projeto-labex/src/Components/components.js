@@ -5,17 +5,15 @@ import styled, { createGlobalStyle } from "styled-components";
 export const Body = styled.div`
 display: flex;
 flex-direction: column;
-justify-content: center;
+flex-grow: 1;
+min-height: 100vh;
 align-items: center;
-margin: 20px 0px;
-height: 100vh;
+margin: 30px 0px;
 `
 export const Container = styled.div`
-height: 100vh;
-
-`
-export const ContainerDetails = styled.div`
-height:100%;
+ min-height: 100%;
+    display: flex;
+    flex-direction: column;
 `
 
 export const GlobalStyle = createGlobalStyle`

@@ -9,6 +9,7 @@ height: 15vh;
 width: 100%;
 align-items: center;
 justify-content: center;
+flex-shrink: 0
 `
 
 export const IconHeader = styled.img`
@@ -19,7 +20,9 @@ max-width: 100px;
 export default function Header() {
   return (
     <Head>
-    <h2>LabeX</h2> <IconHeader src={IconHead} />
+      <IconHeader src={IconHead} />
+    <h2>LabeX</h2> 
+    <button>Home</button>
   </Head>
   )
 }

@@ -11,6 +11,7 @@ width: 80%;
 margin: 10px 0px;
 padding: 10px;
 `
+
 export const CardTripList= styled.div`
 border: 1px solid black;
 border-radius: 30px;

@@ -15,14 +15,6 @@ padding:10px;
 export const Title = styled.h1`
 margin: 10px 0px;
 `
-export const BodyAdmin = styled.div`
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
-margin: 20px 0px;
-height: 100%;
-`
 
 export const CardAdmin = styled.div`
 border: 1px solid black;

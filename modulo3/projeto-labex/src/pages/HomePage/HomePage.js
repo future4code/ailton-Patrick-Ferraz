@@ -2,13 +2,11 @@ import React from "react";
 import {
   DivBtnHomePage,
   ImgHomeLogo,
-  IconHeader,
   BtnHome,
-  IconFooter,
 } from "./styledHome";
 import { useNavigate } from "react-router-dom";
 import { goToListTripsPage, goToLoginPage } from "../../Routes/coordinator";
-import { Body } from "../../Components/components";
+import { Body, Container } from "../../Components/components";
 import Header from "../../constants/Header";
 import Footer from "../../constants/Footer";
 import AstroHome from "../../Imgs/AstroHome.png";
@@ -18,7 +16,7 @@ export default function HomePage() {
   const navigate = useNavigate();
 
   return (
-    <div>
+    <Container>
       <Header/>
       <Body>
         <ImgHomeLogo src={AstroHome} />
@@ -32,6 +30,6 @@ export default function HomePage() {
         </Body>
       <Footer/>
      
-    </div>
+    </Container>
   );
 }

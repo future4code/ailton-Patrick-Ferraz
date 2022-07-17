@@ -1,13 +1,14 @@
-import React, { useState,useEffect } from 'react'
-import { useNavigate,useParams } from 'react-router-dom'
-import { backOnePage,goToCreateTripPage,goToTripDetails,goToLoginPage  } from '../../Routes/coordinator'
+import React from 'react'
+import { useNavigate } from 'react-router-dom'
+import { backOnePage,goToCreateTripPage,goToLoginPage  } from '../../Routes/coordinator'
 import { useRequestData } from '../../Hooks/useRequestData'
 import { base_URL,aluno } from '../../constants/constants'
 import useProtectedPage from '../../Hooks/useProtectedPage'
 import axios from 'axios'
 import Header from '../../constants/Header'
 import Footer from '../../constants/Footer'
-import{BodyAdmin,TriplistAdmin,CardAdmin, DivBtn, Title,BtnCreateTrip,BtnBack,BtnLogout,BtnDelete,BtnDetails } from "./styled"
+import { Body,Container } from '../../Components/components'
+import{TriplistAdmin,CardAdmin, DivBtn, Title,BtnCreateTrip,BtnBack,BtnLogout,BtnDelete,BtnDetails } from "./styled"
 
 
 export default function AdminHome() {
@@ -15,9 +16,6 @@ export default function AdminHome() {
   const navigate = useNavigate()
   const [trip,getTrips] =  useRequestData(`${base_URL}/${aluno}/trips`);
   const token = localStorage.getItem("token")
-  const params = useParams();
-  const tripId = params.id;
-  
 
   useProtectedPage()
 
@@ -41,15 +39,17 @@ export default function AdminHome() {
 const tripList = trip && trip.map((trip)=>{
   return <TriplistAdmin  key={trip.id}>
     <p>{trip.name}</p>
+    <div>
     <BtnDetails onClick={()=>navigate(`/admin/trips/${trip.id}`)}>Ver Detalhes</BtnDetails>
     <BtnDelete  onClick={()=>deleteTrip(trip.id)}>Delete</BtnDelete>
+    </div>
   </TriplistAdmin>
 })
 
   return (
-      <div>
+      <Container>
       <Header/>
-      <BodyAdmin>
+      <Body>
       <CardAdmin>
       <Title>AdminHome</Title>
       <DivBtn>
@@ -59,9 +59,9 @@ const tripList = trip && trip.map((trip)=>{
       </DivBtn>
       {tripList}
       </CardAdmin>
-      </BodyAdmin>
+      </Body>
       <Footer/>
-    </div>
+    </Container>
       
   )
 }

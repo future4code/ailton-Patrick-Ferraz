@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import { goToHomePage } from "../../Routes/coordinator";
 import axios from "axios";
@@ -6,8 +6,8 @@ import { aluno, base_URL } from "../../constants/constants";
 import useForm from "../../Hooks/useForm";
 import Header from "../../constants/Header";
 import Footer from "../../constants/Footer";
-import { CardLogin,BtnSubmit,Form,Title,BtnBack,BodyLogin } from "./styled";
-import { Body } from "../../Components/components";
+import { CardLogin,BtnSubmit,Form,Title,BtnBack} from "./styled";
+import { Body, Container } from "../../Components/components";
 
 export default function LoginPage() {
   const { form, onChange } = useForm({
@@ -30,10 +30,9 @@ export default function LoginPage() {
   };
 
   return (
-    <div>
-      
+    <Container>
       <Header/>
-      <BodyLogin>
+      <Body>
       <CardLogin>
       <Title>LoginPage</Title>
       <Form onSubmit={onSubmitLogin}>
@@ -57,9 +56,9 @@ export default function LoginPage() {
       </Form>
       <BtnBack onClick={() => goToHomePage(navigate)}>Voltar</BtnBack>
       </CardLogin>
-      </BodyLogin>
+      </Body>
       <Footer/>
       
-    </div>
+    </Container>
   );
 }

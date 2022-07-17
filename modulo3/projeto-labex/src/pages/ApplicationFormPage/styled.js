@@ -4,15 +4,6 @@ export const Title = styled.h1`
 margin-bottom: 30px;
 `
 
-
-export const BodySingUp = styled.div`
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
-margin: 20px 0px;
-height: 100vh;
-`
 export const BtnSubmit = styled.button`
 background-color: purple;
 border-radius: 25px;

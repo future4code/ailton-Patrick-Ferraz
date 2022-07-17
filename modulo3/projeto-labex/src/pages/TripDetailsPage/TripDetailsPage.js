@@ -7,7 +7,8 @@ import { base_URL, aluno } from "../../constants/constants";
 import useProtectedPage from "../../Hooks/useProtectedPage";
 import Header from "../../constants/Header"
 import Footer from "../../constants/Footer"
-import { BodyDetails,CardDetails,ApprovedCandidates,BtnBack,Title} from "./styled";
+import { CardDetails,ApprovedCandidates,BtnBack,Title} from "./styled";
+import { Body, Container } from "../../Components/components";
 
 export default function TripDetailsPage() {
   useProtectedPage();
@@ -16,6 +17,7 @@ export default function TripDetailsPage() {
   const [details, setDetails] = useState("");
   const token = localStorage.getItem("token");
   const navigate = useNavigate();
+
 
   useEffect(() => {
     tripDetails();
@@ -49,11 +51,10 @@ export default function TripDetailsPage() {
           },
         }
       )
-      .then((res) => {
+      .then(() => {
         tripDetails();
       })
-      .catch((err) => {
-        console.log(err);
+      .catch(() => {
       });
   };
 
@@ -61,7 +62,7 @@ export default function TripDetailsPage() {
     details.candidates &&
     details.candidates.map((person) => {
       return (
-        <div>
+        <div key={person.id}>
           <p>Nome: {person.name}</p>
           <p>Idade: {person.age}</p>
           <p>Profissão: {person.profession}</p>
@@ -87,7 +88,7 @@ export default function TripDetailsPage() {
     details.approved &&
     details.approved.map((person) => {
       return (
-        <div>
+        <div key={person.id}>
           <p>Nome: {person.name}</p>
           <p>Idade: {person.age}</p>
           <p>Profissão: {person.profession}</p>
@@ -98,11 +99,11 @@ export default function TripDetailsPage() {
     });
 
   return (
-    <div>
+    <Container>
       <Header/>
-      <BodyDetails>
+      <Body>
       <CardDetails>
-      <Title> TripDetailsPage</Title>
+      <Title> Detalhes da viagem</Title>
       <div>
         <h3>{details.name}</h3>
         <p>Detalhes da Viagem: {details.description}</p>
@@ -110,18 +111,18 @@ export default function TripDetailsPage() {
         <p>Duração em dias: {details.durationInDays}</p>
         <p>Data: {details.date}</p>
       </div>
-      <div>
+      <ApprovedCandidates>
         <h4>Candidatos Pendentes</h4>
         {candidates}
-      </div>
+      </ApprovedCandidates>
       <ApprovedCandidates>
         <h4>Candidatos Aprovados</h4>
         {approvedCandidates}
       </ApprovedCandidates>
       <BtnBack  onClick={() => backOnePage(navigate)}>Voltar</BtnBack>
       </CardDetails>
-      </BodyDetails>
+      </Body>
       <Footer/>
-    </div>
+    </Container>
   );
 }

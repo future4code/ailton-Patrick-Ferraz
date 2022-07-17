@@ -8,7 +8,8 @@ import useForm from "../../Hooks/useForm";
 import Header from "../../constants/Header";
 import Footer from "../../constants/Footer";
 import { CardCreateTrip } from "./styled";
-import { Form,Title,BtnBack,BtnSubmit,BodyCreateTrip} from "./styled";
+import { Form,Title,BtnBack,BtnSubmit} from "./styled";
+import { Body, Container } from "../../Components/components";
 
 export default function CreateTripPage() {
   useProtectedPage();
@@ -40,9 +41,9 @@ export default function CreateTripPage() {
   };
 
   return (
-    <div>
+    <Container>
       <Header/>
-      <BodyCreateTrip>
+      <Body>
       <CardCreateTrip>
       <Title>Criar Viagem</Title>
       <Form onSubmit={createTrip}>
@@ -104,8 +105,8 @@ export default function CreateTripPage() {
       <BtnBack  onClick={() => backOnePage(navigate)}>Voltar</BtnBack>
       </CardCreateTrip >
       
-      </BodyCreateTrip>
+      </Body>
       <Footer/>
-    </div>
+    </Container>
   );
 }
