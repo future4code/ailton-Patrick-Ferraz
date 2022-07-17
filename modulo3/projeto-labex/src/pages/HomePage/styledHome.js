@@ -13,12 +13,20 @@ max-height: 300px;
 max-width: 300px;
 `
 
+export const MainContent = styled.div`
+display: flex;
+flex-direction: column;
+align-items: center;
+margin: 50px 0px;
+`
+
 export const BtnHome = styled.button`
 background-color: purple;
 border-radius: 30px;
 border: none;
-width: 100px;
-height: 50px;
+width: 140px;
+height: 60px;
+color:white;
 :hover{
     cursor: pointer;
     background-color: black;

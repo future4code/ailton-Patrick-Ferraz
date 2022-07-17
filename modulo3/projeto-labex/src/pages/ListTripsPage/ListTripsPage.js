@@ -7,7 +7,7 @@ import { goToApplicationFormPage } from '../../Routes/coordinator'
 import Header from '../../constants/Header'
 import Footer from '../../constants/Footer'
 import { Body, Container } from '../../Components/components'
-import { CardTripList,DivBtnTripPage,BtnBack,BtnSingUp,CardTrips,Title } from './styled'
+import { CardTripList,DivBtnTripPage,BtnListTrip,CardTrips,Title } from './styled'
 
 export default function ListTripsPage() {
 
@@ -21,11 +21,13 @@ export default function ListTripsPage() {
 
   const tripsList = trips && trips.map((trip)=>{
     return <CardTrips key={trip.id}>
+      <div>
       <p>Nome: {trip.name}</p>
       <p>Descrição: {trip.description}</p>
       <p>Plante: {trip.planet}</p>
       <p>Duração: {trip.durationInDays}</p>
       <p>Dara: {trip.date}</p>
+      </div>
     </CardTrips>
   });
 
@@ -36,8 +38,8 @@ export default function ListTripsPage() {
         <CardTripList>
       <Title>Lista de viagens</Title>
       <DivBtnTripPage>
-      <BtnBack onClick={()=>backOnePage(navigate)}>Voltar</BtnBack>
-      <BtnSingUp onClick={()=>goToApplicationFormPage(navigate)}>Increver-se</BtnSingUp>
+      <BtnListTrip onClick={()=>backOnePage(navigate)}>Voltar</BtnListTrip>
+      <BtnListTrip onClick={()=>goToApplicationFormPage(navigate)}>Increver-se</BtnListTrip>
       </DivBtnTripPage>
       {tripsList}
       </CardTripList>

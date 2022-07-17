@@ -7,8 +7,9 @@ import { base_URL, aluno } from "../../constants/constants";
 import useProtectedPage from "../../Hooks/useProtectedPage";
 import Header from "../../constants/Header"
 import Footer from "../../constants/Footer"
-import { CardDetails,ApprovedCandidates,BtnBack,Title} from "./styled";
+import { CardDetails,Candidates,BtnBack,Title,Infos, PendingCandidate, ApprovedCandidate} from "./styled";
 import { Body, Container } from "../../Components/components";
+import { useRequestData } from "../../Hooks/useRequestData";
 
 export default function TripDetailsPage() {
   useProtectedPage();
@@ -17,6 +18,8 @@ export default function TripDetailsPage() {
   const [details, setDetails] = useState("");
   const token = localStorage.getItem("token");
   const navigate = useNavigate();
+  const [isLoading] = useRequestData(`${base_URL}/${aluno}/trip/${idTrip}`)
+ 
 
 
   useEffect(() => {
@@ -62,7 +65,8 @@ export default function TripDetailsPage() {
     details.candidates &&
     details.candidates.map((person) => {
       return (
-        <div key={person.id}>
+        <PendingCandidate key={person.id}>
+          <div>
           <p>Nome: {person.name}</p>
           <p>Idade: {person.age}</p>
           <p>Profissão: {person.profession}</p>
@@ -80,7 +84,8 @@ export default function TripDetailsPage() {
                 decidePerson(person.id,false);
               }}> Dispensar</button>
           </div>
-        </div>
+          </div>
+        </PendingCandidate>
       );
     });
 
@@ -88,13 +93,15 @@ export default function TripDetailsPage() {
     details.approved &&
     details.approved.map((person) => {
       return (
-        <div key={person.id}>
+        <ApprovedCandidate key={person.id}>
+          <div>
           <p>Nome: {person.name}</p>
           <p>Idade: {person.age}</p>
           <p>Profissão: {person.profession}</p>
           <p>País: {person.country}</p>
           <p>Texto de candidatura: {person.applicationText}</p>
-        </div>
+          </div>
+        </ApprovedCandidate>
       );
     });
 
@@ -104,21 +111,28 @@ export default function TripDetailsPage() {
       <Body>
       <CardDetails>
       <Title> Detalhes da viagem</Title>
-      <div>
+      <Infos>
         <h3>{details.name}</h3>
-        <p>Detalhes da Viagem: {details.description}</p>
-        <p>Planeta: {details.planet}</p>
-        <p>Duração em dias: {details.durationInDays}</p>
-        <p>Data: {details.date}</p>
-      </div>
-      <ApprovedCandidates>
-        <h4>Candidatos Pendentes</h4>
-        {candidates}
-      </ApprovedCandidates>
-      <ApprovedCandidates>
+        <p>Detalhes da Viagem: {details.description};</p>
+        <p>Planeta: {details.planet};</p>
+        <p>Duração em dias: {details.durationInDays};</p>
+        <p>Data: {details.date}.</p>
+      </Infos>
+      <Candidates>
+      <h4>Candidatos Pendentes</h4>
+      {isLoading && <strong>Carregando lista de Candidatos Pendentes</strong>}
+      {!isLoading && details.candidates && details.candidates.length > 0 && candidates}
+      {!isLoading && details.candidates && details.candidates.length === 0 && (
+        <strong>Não há candidatos pendentes.</strong>)}
+      </Candidates>
+      <Candidates>
         <h4>Candidatos Aprovados</h4>
-        {approvedCandidates}
-      </ApprovedCandidates>
+        {isLoading && <strong>Carregando lista de Candidatos Pendentes</strong>}
+        {!isLoading && details.approved && details.approved.length > 0 && approvedCandidates}
+        {!isLoading && details.approved && details.approved.length === 0 && (
+          <strong>Ainda não existem candidatos aprovados para essa viagem. </strong>
+        )}
+      </Candidates>
       <BtnBack  onClick={() => backOnePage(navigate)}>Voltar</BtnBack>
       </CardDetails>
       </Body>

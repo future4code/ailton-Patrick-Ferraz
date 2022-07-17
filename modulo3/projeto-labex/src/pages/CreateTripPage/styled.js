@@ -10,8 +10,8 @@ border-radius: 30px;
 display: flex;
 align-items: center;
 flex-direction: column;
-height: 60%;
-width: 50%;
+height: 80vh;
+width: 50vw;
 justify-content: center;
 background-color: black;
 color:white;
@@ -20,6 +20,7 @@ export const Form = styled.form`
 display: flex;
 flex-direction: column;
 gap: 10px;
+width: 60%;
 `
 
 export const BtnSubmit = styled.button`

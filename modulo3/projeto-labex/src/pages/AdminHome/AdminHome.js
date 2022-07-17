@@ -8,13 +8,13 @@ import axios from 'axios'
 import Header from '../../constants/Header'
 import Footer from '../../constants/Footer'
 import { Body,Container } from '../../Components/components'
-import{TriplistAdmin,CardAdmin, DivBtn, Title,BtnCreateTrip,BtnBack,BtnLogout,BtnDelete,BtnDetails } from "./styled"
+import{TriplistAdmin,CardAdmin, DivBtn, Title,BtnAdminHome ,BtnDelete,BtnDetails,DivBtnTripDetails } from "./styled"
 
 
 export default function AdminHome() {
 
   const navigate = useNavigate()
-  const [trip,getTrips] =  useRequestData(`${base_URL}/${aluno}/trips`);
+  const [trip,getTrips,isLoading] =  useRequestData(`${base_URL}/${aluno}/trips`);
   const token = localStorage.getItem("token")
 
   useProtectedPage()
@@ -38,11 +38,11 @@ export default function AdminHome() {
   
 const tripList = trip && trip.map((trip)=>{
   return <TriplistAdmin  key={trip.id}>
-    <p>{trip.name}</p>
-    <div>
+    <strong>{trip.name}</strong>
+    <DivBtnTripDetails>
     <BtnDetails onClick={()=>navigate(`/admin/trips/${trip.id}`)}>Ver Detalhes</BtnDetails>
     <BtnDelete  onClick={()=>deleteTrip(trip.id)}>Delete</BtnDelete>
-    </div>
+    </DivBtnTripDetails>
   </TriplistAdmin>
 })
 
@@ -51,13 +51,15 @@ const tripList = trip && trip.map((trip)=>{
       <Header/>
       <Body>
       <CardAdmin>
-      <Title>AdminHome</Title>
+      <Title>Página do Administrador</Title>
       <DivBtn>
-      <BtnBack onClick={()=>backOnePage(navigate)}>Voltar</BtnBack>
-      <BtnCreateTrip onClick={()=>goToCreateTripPage(navigate)}>Criar Viagem</BtnCreateTrip>
-      <BtnLogout onClick={()=>goToLoginPage(navigate)}>Logout</BtnLogout>
+      <BtnAdminHome  onClick={()=>backOnePage(navigate)}>Voltar</BtnAdminHome>
+      <BtnAdminHome  onClick={()=>goToCreateTripPage(navigate)}>Criar Viagem</BtnAdminHome>
+      <BtnAdminHome  onClick={()=>goToLoginPage(navigate)}>Logout</BtnAdminHome>
       </DivBtn>
-      {tripList}
+      {isLoading && <p>Carregando lista de viagens...</p>}
+      {!isLoading && trip && trip.length > 0 && tripList }
+      {!isLoading && trip && trip.length === 0 && (<strong>Não há viagens criadas. </strong>)}
       </CardAdmin>
       </Body>
       <Footer/>

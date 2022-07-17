@@ -3,6 +3,7 @@ import {
   DivBtnHomePage,
   ImgHomeLogo,
   BtnHome,
+  MainContent
 } from "./styledHome";
 import { useNavigate } from "react-router-dom";
 import { goToListTripsPage, goToLoginPage } from "../../Routes/coordinator";
@@ -19,6 +20,7 @@ export default function HomePage() {
     <Container>
       <Header/>
       <Body>
+        <MainContent>
         <ImgHomeLogo src={AstroHome} />
         <h1>LabeX</h1>
         <DivBtnHomePage>
@@ -27,6 +29,7 @@ export default function HomePage() {
           </BtnHome>
           <BtnHome onClick={() => goToLoginPage(navigate)}>Login</BtnHome>
         </DivBtnHomePage>
+        </MainContent>
         </Body>
       <Footer/>
      

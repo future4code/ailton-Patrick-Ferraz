@@ -8,7 +8,7 @@ flex-direction: column;
 flex-grow: 1;
 min-height: 100vh;
 align-items: center;
-margin: 30px 0px;
+margin: 50px 0px;
 `
 export const Container = styled.div`
  min-height: 100%;

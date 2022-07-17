@@ -1,21 +1,21 @@
 import axios from "axios";
 import { useState,useEffect } from "react";
-import { base_URL,aluno } from '../constants/constants'
 
 
 export const useRequestData = (url) =>{
 const [data,setData] = useState ("");
-const token = localStorage.getItem("token")
+const [isLoading, setIsLoading] = useState(false);
 
 useEffect(()=>{
+    setIsLoading(true);
     getTrips(url)
 },[url]);
 
 const getTrips = (url) =>{
     axios.get(url)
-.then((res)=>{setData(res.data.trips)})
-.catch(()=>{})
+.then((res)=>{setData(res.data.trips); setIsLoading(false)})
+.catch(()=>{ setIsLoading(false)})
 }
 
-return [data,getTrips]
+return [data,getTrips,isLoading]
 }
