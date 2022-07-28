@@ -8,16 +8,12 @@ import useForm from "../../hooks/useForm";
 import LoginForm from "./LoginForm";
 import {useNavigate} from 'react-router-dom'
 import {goToCadastro} from '../../routes/coordinator'
+import useUnprotectedPage from "../../hooks/useUnprotectedPage";
 
 export default function Login() {
+  useUnprotectedPage()
   
   const navigate = useNavigate()
-
-  const [form, onChange, clear] = useForm({ email: "", password: "" });
-
-  const onSubmitForm = (e) => {
-    e.preventDefault();
-  };
 
   return (
     <ScreenContainer>
