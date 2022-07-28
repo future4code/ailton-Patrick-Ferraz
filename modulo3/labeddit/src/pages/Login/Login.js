@@ -10,7 +10,7 @@ import {useNavigate} from 'react-router-dom'
 import {goToCadastro} from '../../routes/coordinator'
 import useUnprotectedPage from "../../hooks/useUnprotectedPage";
 
-export default function Login() {
+export default function Login({ setRightButtonText}) {
   useUnprotectedPage()
   
   const navigate = useNavigate()
@@ -18,7 +18,7 @@ export default function Login() {
   return (
     <ScreenContainer>
       <h1>Login</h1>
-  <LoginForm/>  
+  <LoginForm setRightButtonText={setRightButtonText}/>  
       <SingUpButtonContainer>
         <Button onClick={() => goToCadastro(navigate)} fullWidth variant="text" color="primary">
           Cadastre-se

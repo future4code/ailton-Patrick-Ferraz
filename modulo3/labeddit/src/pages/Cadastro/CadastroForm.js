@@ -5,13 +5,13 @@ import useForm from "../../hooks/useForm";
 import { cadastro } from "../../services/users";
 import { useNavigate } from "react-router-dom";
 
-export default function CadastroForm() {
+export default function CadastroForm(setRightButtonText) {
   const [form, onChange, clear] = useForm({username:"", email: "", password: "" });
   const navigate = useNavigate()
  
   const onSubmitForm = (e) => {
     e.preventDefault();
-    cadastro(form,clear,navigate)
+    cadastro(form,clear,navigate,setRightButtonText)
   };
 
   return (
@@ -60,7 +60,7 @@ export default function CadastroForm() {
             color="primary"
             margin="normal"
           >
-            Login
+            Cadastrar
           </Button>
         </form>
   );
