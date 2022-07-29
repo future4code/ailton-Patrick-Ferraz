@@ -6,6 +6,7 @@ import {CardPosts} from './styled'
 import { goToPost } from '../../routes/coordinator'
 import { useNavigate } from 'react-router-dom'
 import CreatePostForm from './CreatePostForm'
+import {Loading} from '../../components/Loading/Loading'
 
 
 
@@ -33,7 +34,7 @@ export default function Feed() {
   return (
     <div>
       <CreatePostForm/>
-      {postsList}
+      {postsList.length >0 ? postsList : <Loading/>}
     </div>
   )
 }
