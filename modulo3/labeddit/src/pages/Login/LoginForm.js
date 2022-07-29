@@ -1,26 +1,27 @@
-import React from "react";
+import React,{useState} from "react";
 import Button from "@mui/material/Button";
 import { TextField } from "@mui/material";
 import useForm from "../../hooks/useForm";
 import {login} from '../../services/users'
 import { useNavigate } from "react-router-dom";
+import {CircularProgress} from "@mui/material";
 
 
 export default function LoginForm({ setRightButtonText}) {
   const [form, onChange, clear] = useForm({ email: "", password: "" });
+  const [isLoading, setIsLoading] = useState(false)
 
   const navigate = useNavigate()
 
   const onSubmitForm = (e) => {
     e.preventDefault();
-    login(form,clear,navigate,setRightButtonText);
+    login(form,clear,navigate,setRightButtonText,setIsLoading);
   };
 
 
   return (
     <form onSubmit={onSubmitForm}>
       <TextField
-        id="outlined-basic"
         label="Email"
         variant="outlined"
         fullWidth
@@ -32,7 +33,6 @@ export default function LoginForm({ setRightButtonText}) {
         type={"email"}
       />
       <TextField
-        id="outlined-basic"
         label="Senha"
         variant="outlined"
         fullWidth
@@ -50,7 +50,7 @@ export default function LoginForm({ setRightButtonText}) {
         color="primary"
         margin="normal"
       >
-        Login
+        {isLoading ? <CircularProgress color={"inherit"} size={24}/> : <>Login</>}
       </Button>
     </form>
   );
