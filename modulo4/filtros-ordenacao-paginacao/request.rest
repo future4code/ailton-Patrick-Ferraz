@@ -1,0 +1,55 @@
+# Get all users GET http://localhost:3003/user Content-Type: application/json
+
+###
+
+# Search users by name ======================================================== GET http://localhost:3003/user/search?name=Maju Content-Type: application/json
+
+# [ # { # "id": 25, # "name": "Maju", # "email": "maju@labenu", # "type": "CX" # } # ]
+
+###
+
+# Search users by type ========================================================= GET http://localhost:3003/user/CX Content-Type: application/json
+
+# [ # { # "id": 21, # "name": "Aline", # "email": "aline@labenu", # "type": "CX" # }, # { # "id": 22, # "name": "Nathalia", # "email": "nathaliacx@labenu", # "type": "CX" # }, # { # "id": 23, # "name": "Layla", # "email": "layla@labenu", # "type": "CX" # } # ]
+
+###
+
+# Search users by name or type ================================================= GET http://localhost:3003/searchBy/?name=Maju Content-Type: application/json
+
+# [ # { # "id": 25, # "name": "Maju", # "email": "maju@labenu", # "type": "CX" # } # ]
+
+###
+
+GET http://localhost:3003/searchBy/?type=CX Content-Type: application/json
+
+# [ # { # "id": 21, # "name": "Aline", # "email": "aline@labenu", # "type": "CX" # }, # { # "id": 24, # "name": "Jonathan", # "email": "jonathan@labenu", # "type": "CX" # }, # { # "id": 23, # "name": "Layla", # "email": "layla@labenu", # "type": "CX" # }, # { # "id": 25, # "name": "Maju", # "email": "maju@labenu", # "type": "CX" # }, # { # "id": 22, # "name": "Nathalia", # "email": "nathaliacx@labenu", # "type": "CX" # } # ]
+
+###
+
+# Search user by page ========================================================= GET http://localhost:3003/userByPage/?page=2 Content-Type: application/json
+
+# [ # { # "id": 8, # "name": "Chijo", # "email": "chijo@labenu", # "type": "Teacher" # }, # { # "id": 5, # "name": "Darvas", # "email": "darvas@labenu", # "type": "Teacher" # }, # { # "id": 19, # "name": "Fernanda", # "email": "fernanda@labenu", # "type": "Operations" # }, # { # "id": 17, # "name": "Jean", # "email": "jean@labenu", # "type": "Operations" # }, # { # "id": 2, # "name": "João", # "email": "joao@labenu", # "type": "Teacher" # } # ]
+
+###
+
+# Search users by name or type and page ================================== GET http://localhost:3003/filtered Content-Type: application/json
+
+# [ # { # "id": 21, # "name": "Aline", # "email": "aline@labenu", # "type": "CX" # }, # { # "id": 4, # "name": "Amanda", # "email": "amanda@labenu", # "type": "Teacher" # }, # { # "id": 15, # "name": "Amanda", # "email": "amandaop@labenu", # "type": "Operations" # }, # { # "id": 10, # "name": "Bruno", # "email": "bruno@labenu", # "type": "Teacher" # }, # { # "id": 7, # "name": "Caio", # "email": "caio@labenu", # "type": "Teacher" # } # ]
+
+###
+
+GET http://localhost:3003/filtered/?name=Amanda Content-Type: application/json
+
+# [ # { # "id": 4, # "name": "Amanda", # "email": "amanda@labenu", # "type": "Teacher" # }, # { # "id": 15, # "name": "Amanda", # "email": "amandaop@labenu", # "type": "Operations" # } # ]
+
+###
+
+GET http://localhost:3003/filtered/?type=Teacher Content-Type: application/json
+
+# [ # { # "id": 4, # "name": "Amanda", # "email": "amanda@labenu", # "type": "Teacher" # }, # { # "id": 10, # "name": "Bruno", # "email": "bruno@labenu", # "type": "Teacher" # }, # { # "id": 7, # "name": "Caio", # "email": "caio@labenu", # "type": "Teacher" # }, # { # "id": 8, # "name": "Chijo", # "email": "chijo@labenu", # "type": "Teacher" # }, # { # "id": 5, # "name": "Darvas", # "email": "darvas@labenu", # "type": "Teacher" # } # ]
+
+###
+
+GET http://localhost:3003/filtered/?page=3 Content-Type: application/json
+
+# [ # { # "id": 24, # "name": "Jonathan", # "email": "jonathan@labenu", # "type": "CX" # }, # { # "id": 9, # "name": "Lais", # "email": "lais@labenu", # "type": "Teacher" # }, # { # "id": 23, # "name": "Layla", # "email": "layla@labenu", # "type": "CX" # }, # { # "id": 11, # "name": "Luciano", # "email": "luciano@labenu", # "type": "Operations" # }, # { # "id": 25, # "name": "Maju", # "email": "maju@labenu", # "type": "CX" # } # ]
