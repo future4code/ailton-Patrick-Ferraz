@@ -1,0 +1,23 @@
+POST http://localhost:3003/singup
+Content-Type: application/json
+
+{
+    "name":"Zerbit",
+    "email":"Zerbit@ferraz.com",
+    "password":"123456"
+}
+
+###
+
+POST http://localhost:3003/login
+Content-Type: application/json
+
+{
+    "email":"Zerbit@ferraz.com",
+    "password":"123456"
+}
+
+###
+
+GET http://localhost:3003/user/profile
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImU0NzJkZmJhLWI0NjYtNGU2Ny04ODlhLTQyM2FkZmQ4NDY5YyIsImlhdCI6MTY2MzI4ODE2MCwiZXhwIjoxNjYzMjkxNzYwfQ.9Z2oKtx2VjoWPcvCYTE8yTiWnPqocxPYK3ZDy3rL2QQ

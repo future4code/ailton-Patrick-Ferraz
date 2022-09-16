@@ -3,7 +3,6 @@ import * as jwt from "jsonwebtoken";
 
 export interface AuthenticationData{
     id:string,
-    role:string
 }
 
 export class Authenticator {
