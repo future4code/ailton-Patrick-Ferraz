@@ -21,6 +21,13 @@ export async function SingUp(req:Request, res:Response){
         throw new InvalidEmail();
     }
 
+    
+
+    //if(!email.includes("@")){
+   //     throw new InvalidEmail();
+  //  }
+
+
     if(password.length<6){
         throw new PasswordLength()
     }
@@ -40,7 +47,6 @@ export async function SingUp(req:Request, res:Response){
     const token = authenticator.generate({id})
 
     res.status(201).send({message: 'Usuário criado com sucessso', token})
-
 
 
     } catch (error:any) {

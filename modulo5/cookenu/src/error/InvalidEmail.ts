@@ -2,6 +2,6 @@ import { BaseError } from "./BaseError";
 
 export class InvalidEmail extends BaseError{
     constructor(){
-        super("Email invalido.",403)
+        super("Não autorizado.",401)
     }
 }

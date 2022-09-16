@@ -1,15 +1,8 @@
 import { Request, Response } from "express";
 import { UserDatabase } from "../data/UserDatabase";
 import { AuthorizationError } from "../error/AuthorizationError";
-import { Incorrect } from "../error/Incorrect";
-import { InvalidEmail } from "../error/InvalidEmail";
-import { MissingFields } from "../error/MissingFields";
-import { PasswordLength } from "../error/PasswordLenght";
-import { UserNotRegistered } from "../error/UserNotRegistered";
-import { User } from "../model/User";
 import { Authenticator } from "../services/Authenticator";
-import { HashManager } from "../services/HashManager";
-import { IdGenerator } from "../services/IdGenerator";
+
 
 export async function GetProfile(req:Request, res:Response){
     try {
@@ -20,12 +13,12 @@ export async function GetProfile(req:Request, res:Response){
     throw new AuthorizationError()
   }
 
-  //const authenticator = new Authenticator();
-  //const tokenData = authenticator.getTokenData(token);
+  const authenticator = new Authenticator();
+  const tokenData = authenticator.getTokenData(token);
 
   const userDatabase = new UserDatabase();
   
-  const user = await userDatabase.getUser()
+  const user = await userDatabase.getUser(tokenData.id)
 
   res.status(200).send(user)
 

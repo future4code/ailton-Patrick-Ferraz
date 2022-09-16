@@ -3,12 +3,10 @@ import { UserDatabase } from "../data/UserDatabase";
 import { Incorrect } from "../error/Incorrect";
 import { InvalidEmail } from "../error/InvalidEmail";
 import { MissingFields } from "../error/MissingFields";
-import { PasswordLength } from "../error/PasswordLenght";
 import { UserNotRegistered } from "../error/UserNotRegistered";
-import { User } from "../model/User";
 import { Authenticator } from "../services/Authenticator";
 import { HashManager } from "../services/HashManager";
-import { IdGenerator } from "../services/IdGenerator";
+
 
 export async function Login(req:Request, res:Response){
     try {

@@ -32,11 +32,12 @@ public async findUserByEmail(email:string): Promise<User>{
     }
 }
 
-public async getUser(): Promise<User> {
+public async getUser(id:string): Promise<User> {
     try {
 
         const user = await BaseDatabase.connection('cookenu_user')
         .select('id','name','email')
+        .where({id})
         return user[0] && User.toUserModel(user[0])
         
     } catch (error:any) {
