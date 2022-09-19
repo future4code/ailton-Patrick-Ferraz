@@ -1,8 +1,12 @@
 import  app  from "./app";
-import { GetProfile } from "./endpoints/GetProfile";
-import { Login } from "./endpoints/Login";
-import { SingUp } from "./endpoints/SingUp";
+import { UserEndpoint } from "./endpoints/User";
 
-app.get('/user/profile',GetProfile)
-app.post("/singup",SingUp)
-app.post("/login", Login)
+
+const userEndpoint = new UserEndpoint()
+
+app.get('/user/profile',userEndpoint.GetProfile)
+app.get('/user/:id', userEndpoint.GetAnotherProfile)
+app.post("/singup",userEndpoint.SingUp)
+app.post("/login", userEndpoint.Login)
+
+app.post('/recipe')

@@ -21,8 +21,11 @@ export class User{
         return this.password;
     }
 
-static toUserModel(data:any):User{
-    return new User(data.id, data.name, data.email, data.password);
-}
 
-}
+    }
+
+    export interface UserBD{
+    id:string;
+    name:string;
+    email:string;
+    }
