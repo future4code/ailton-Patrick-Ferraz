@@ -13,6 +13,9 @@ export interface IUserDB{
 
 
 export class User {
+    static TABLE_USERS(TABLE_USERS: any) {
+        throw new Error("Method not implemented.");
+    }
     constructor(
         private id: string,
         private name: string,
@@ -39,4 +42,12 @@ export class User {
    public getRole = () => {
      return this.role
     }
+
+}  
+
+export interface userDTO{
+  name: string,
+  email: string,
+  password: string,
+  role:USER_ROLES
 }
