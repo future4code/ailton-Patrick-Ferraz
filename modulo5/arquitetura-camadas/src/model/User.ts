@@ -51,3 +51,9 @@ export interface userDTO{
   password: string,
   role:USER_ROLES
 }
+
+export interface UserBD{
+  id:string,
+  name:string,
+  email:string,
+}

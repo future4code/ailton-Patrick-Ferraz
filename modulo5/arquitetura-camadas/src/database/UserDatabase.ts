@@ -29,4 +29,12 @@ async createUser(user: User): Promise<string> {
     return `Usuario ${user.getName()} cadastrado com sucesso.`
 }
 
+async getUserById(id: string): Promise<any> {
+
+    const result = await  BaseDatabase.connection('Arq_Users')
+        .select("*")
+        .where({ id })
+
+    return result
+}
 }
