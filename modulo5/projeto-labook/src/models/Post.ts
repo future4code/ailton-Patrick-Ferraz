@@ -52,23 +52,14 @@ export class Post {
     }
 }
 
-export interface IPostCreateDTO{
-    token: string,
+export interface IPostCreateDTO extends IGetAllPostsDTO{
     content: string,
 }
 
 export interface IGetAllPostsDTO{
     token:string
-
 }
 
-export interface IGetPostsDBDTO {
-    search: string,
-    order: string,
-    sort: string,
-    limit: number,
-    offset: number
-}
 
 export interface IGetPostsPosts{
     id:string,
@@ -79,4 +70,9 @@ export interface IGetPostsPosts{
 
 export interface IGetPostsOutputDTO {
     posts: IGetPostsPosts[]
+}
+
+export interface IDeletePostDTO{
+    token:string,
+    idToDelete: string
 }

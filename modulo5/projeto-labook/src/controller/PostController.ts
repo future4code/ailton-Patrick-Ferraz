@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { PostBusiness } from "../business/PostBusiness";
-import { IGetAllPostsDTO, IPostCreateDTO } from "../models/Post";
+import { IDeletePostDTO, IGetAllPostsDTO, IPostCreateDTO } from "../models/Post";
 
 export class PostController {
     constructor(
@@ -38,6 +38,22 @@ try {
 } catch (error:any) {
     res.status(400).send({ message: error.message })
 }
+}
+
+public deletePost = async (req:Request,res:Response) => {
+    try {
+        const input:IDeletePostDTO = {
+            token: req.headers.authorization as string,
+            idToDelete: req.params.id
+        }
+
+        const response = await this.postBusiness.deletePost(input)
+
+        res.status(200).send(response)
+        
+    } catch (error:any) {
+        res.status(400).send({ message: error.message })
+    }
 }
 
 }

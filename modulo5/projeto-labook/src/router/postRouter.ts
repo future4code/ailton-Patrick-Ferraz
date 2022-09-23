@@ -16,4 +16,5 @@ const postController = new PostController(
 )
 
 postRouter.post("/", postController.postCreate)
-postRouter.get("/getAllPosts",postController.getAllPosts)    
+postRouter.get("/getAllPosts",postController.getAllPosts)
+postRouter.delete("/deletePost/:id", postController.deletePost)

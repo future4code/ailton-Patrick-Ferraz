@@ -1,6 +1,6 @@
 import { PostDatabase } from "../database/PostDatabase"
 import { AuthenticationError } from "../errors/AuthenticationError"
-import { IGetAllPostsDTO, IGetPostsDBDTO, IGetPostsOutputDTO, IGetPostsPosts, IPostCreateDTO, Post } from "../models/Post"
+import { IDeletePostDTO, IGetAllPostsDTO, IGetPostsOutputDTO, IGetPostsPosts, IPostCreateDTO, Post } from "../models/Post"
 import { Authenticator } from "../services/Authenticator"
 import { IdGenerator } from "../services/IdGenerator"
 
@@ -79,5 +79,30 @@ public getAllPosts = async(input:IGetAllPostsDTO) =>{
         posts
     }
      return response
+}
+
+public deletePost = async(input:IDeletePostDTO) =>{
+    const token = input.token
+    const idToDelete = input.idToDelete
+
+    const payload = this.authenticator.getTokenPayload(token)
+
+    if(!payload){
+        throw new AuthenticationError()
+    }
+
+    const userBD = await this.postDatabase.findById(idToDelete)
+
+    if(!userBD){
+        throw new Error("Post não existe no Bando de Dados.")
+    }
+
+    await this.postDatabase.deletePost(idToDelete)
+
+    const response = {
+        message:"Post deletado com sucesso."
+    }
+
+    return response
 }
 }
