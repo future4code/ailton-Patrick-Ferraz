@@ -31,3 +31,8 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZjNTAwMjk5LTUwMWUt
 {
     "content":"Testezinho!"
 }   
+
+###
+
+GET http://localhost:3003/posts//getAllPosts
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZjNTAwMjk5LTUwMWUtNDVmNi04MGU0LWY1OTk1N2I0MTcyZCIsInJvbGUiOiJOT1JNQUwiLCJpYXQiOjE2NjM4NzQ1MTgsImV4cCI6MTY2Mzk2MDkxOH0.01lyN9PnVlXo2tMz_LfR-PFNRoEnDLybM5HSdWeHM64

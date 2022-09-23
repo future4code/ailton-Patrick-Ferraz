@@ -9,7 +9,7 @@ class Migrations extends BaseDatabase {
             console.log("Creating tables...")
             await this.createTables()
             console.log("Tables created successfully.")
-
+            
             console.log("Populating tables...")
             await this.insertData()
             console.log("Tables populated successfully.")

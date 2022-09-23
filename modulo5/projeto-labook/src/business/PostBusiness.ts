@@ -1,6 +1,6 @@
 import { PostDatabase } from "../database/PostDatabase"
 import { AuthenticationError } from "../errors/AuthenticationError"
-import { IPostCreateDTO, Post } from "../models/Post"
+import { IGetAllPostsDTO, IGetPostsDBDTO, IGetPostsOutputDTO, IGetPostsPosts, IPostCreateDTO, Post } from "../models/Post"
 import { Authenticator } from "../services/Authenticator"
 import { IdGenerator } from "../services/IdGenerator"
 
@@ -39,5 +39,45 @@ public postCreate = async(input:IPostCreateDTO) =>{
     
   return post
 
+}
+
+public getAllPosts = async(input:IGetAllPostsDTO) =>{
+    
+        const token = input.token
+
+
+    const payload = this.authenticator.getTokenPayload(token)
+
+    if(!payload){
+        throw new AuthenticationError()
+    }
+
+
+    const postDB = await this.postDatabase.getAllPosts()
+
+    const posts = postDB.map(postDB =>{
+        const post = new Post(
+            postDB.id,
+            postDB.content,
+            postDB.user_id,
+            postDB.like
+           
+        )
+
+        const postResponse:IGetPostsPosts ={
+            id: post.getId(),
+            content: post.getContent(),
+            user_id: post.getUserId(),
+            likes: post.getLikes()
+            
+        }
+
+        return postResponse
+    }
+    )
+    const response:IGetPostsOutputDTO = {
+        posts
+    }
+     return response
 }
 }

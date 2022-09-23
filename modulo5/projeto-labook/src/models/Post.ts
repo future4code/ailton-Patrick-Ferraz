@@ -2,6 +2,7 @@ export interface IPostDB {
     id: string,
     content: string,
     user_id: string
+    like?:number
 }
 
 export interface ILikeDB {
@@ -54,4 +55,28 @@ export class Post {
 export interface IPostCreateDTO{
     token: string,
     content: string,
+}
+
+export interface IGetAllPostsDTO{
+    token:string
+
+}
+
+export interface IGetPostsDBDTO {
+    search: string,
+    order: string,
+    sort: string,
+    limit: number,
+    offset: number
+}
+
+export interface IGetPostsPosts{
+    id:string,
+    content:string,
+    user_id:string,
+    likes:number,
+}
+
+export interface IGetPostsOutputDTO {
+    posts: IGetPostsPosts[]
 }

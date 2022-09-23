@@ -1,4 +1,4 @@
-import { Post } from "../models/Post"
+import { IGetPostsDBDTO, IPostDB, Post } from "../models/Post"
 import { BaseDatabase } from "./BaseDatabase"
 
 export class PostDatabase extends BaseDatabase {
@@ -16,4 +16,15 @@ export class PostDatabase extends BaseDatabase {
         .connection(PostDatabase.TABLE_POSTS)
         .insert(postDB)
     }
+
+     public getAllPosts = async () =>{
+     
+
+
+        const postsDb:IPostDB[] = await PostDatabase
+        .connection(PostDatabase.TABLE_POSTS)
+        .select("*")
+
+        return postsDb
+     }
 }
