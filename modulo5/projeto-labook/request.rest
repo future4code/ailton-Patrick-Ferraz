@@ -7,9 +7,9 @@ POST http://localhost:3003/users/singup
 Content-Type: application/json
 
 {
-    "name":"Patrick",
-    "email":"Eu@example.com",
-    "password":"123456"
+    "name":"Patrick1",
+    "email":"Eu1@example.com",
+    "password":"1234567"
 }
 
 ###

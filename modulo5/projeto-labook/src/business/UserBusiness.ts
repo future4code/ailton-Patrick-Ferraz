@@ -104,10 +104,10 @@ export class UserBusiness {
             userDB.role
         )
 
-        const ComparePassword = await this.hashManager.compare(password,user.getPassword())
+        const comparePassword = await this.hashManager.compare(password,user.getPassword())
 
 
-        if(!ComparePassword){
+        if(!comparePassword){
         throw new Error('Senha incorreta.')}
 
         const payload:ITokenPayload = {
