@@ -129,4 +129,5 @@ const formatDate = (initialDate:string):string =>{
     const formattedDate = date.toLocaleDateString()
 
     return formattedDate
+    
 }
