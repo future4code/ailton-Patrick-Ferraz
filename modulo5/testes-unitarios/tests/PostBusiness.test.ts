@@ -26,8 +26,8 @@ test("Deve ser possível criar um post",async()=>{
 test("Deve retornar uma lista de posts", async () => {
     const input:IGetPostsInputDTO = {
         token:"token-mock-normal"
-    }
-
+    } 
+ 
     const response = await postBusiness.getPosts(input)
 
     expect(response.posts[0]).toBeInstanceOf(Post)
