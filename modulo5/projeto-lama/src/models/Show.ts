@@ -1,4 +1,5 @@
 export interface IShowDB {
+    tickets: number | undefined
     id: string,
     band: string,
     starts_at: Date
@@ -8,6 +9,7 @@ export interface ITicketDB {
     id: string,
     show_id: string,
     user_id: string
+    tickets:number
 }
 
 export class Show {
@@ -49,4 +51,21 @@ export class Show {
     public setTickets = (newTickets: number) => {
         this.tickets = newTickets
     }
+}
+
+export interface ICreateShowInputDTO {
+    token:  string,
+    band: string,
+    starts_at: Date
+}
+
+export interface ICreateShowOutputDTO {
+    message:string,
+}
+export interface IGetAllShowInputDTO {
+    token:string,
+}
+
+export interface IGetAllShowOutputDTO {
+   shows: Show[]
 }
