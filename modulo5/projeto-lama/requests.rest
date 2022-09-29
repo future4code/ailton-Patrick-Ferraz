@@ -1,0 +1,21 @@
+### Endpoint de teste
+GET http://localhost:3003/ping
+
+### Endpoint de SingUp
+POST http://localhost:3003/users/singup
+Content-Type: application/json
+
+{
+    "name":"Patrick123",
+    "email":"teste1342@example.com",
+    "password":"123456"
+}
+
+### Endpoint de Login
+POST http://localhost:3003/users/login
+Content-Type: application/json
+
+{
+     "email":"teste1342@example.com",
+    "password":"123456"
+}
