@@ -15,6 +15,9 @@ export interface IPizzasIngredientsDB {
 };
 
 export class Pizza {
+    push(pizzas: Pizza) {
+        throw new Error("Method not implemented.")
+    }
     constructor(
         private name: string,
         private price: number,
@@ -56,6 +59,13 @@ export class Pizza {
     public removeIngredient = (ingredientToRemove: string) => {{
         return this.ingredients.filter((ingredient) => (ingredient !== ingredientToRemove))
     }
-
+    }
 }
+export interface IGetPizzasOutputDTO{
+    message: string,
+    pizzas: {
+        name:string,
+        price:number,
+        ingredients: string[]
+    }[]
 }

@@ -1,4 +1,4 @@
-import { IPizzaDB, Pizza } from "../models/Pizza"
+import { IPizzaDB, IPizzasIngredientsDB, Pizza } from "../models/Pizza"
 import { BaseDatabase } from "./BaseDatabase"
 
 export class PizzaDatabase extends BaseDatabase {
@@ -14,14 +14,22 @@ export class PizzaDatabase extends BaseDatabase {
         }
     }
 
-    // public findByEmail = async (email: string): Promise<IUserDB | undefined> => {
-    //     const result: IUserDB[] = await BaseDatabase
-    //         .connection(UserDatabase.TABLE_USERS)
-    //         .select()
-    //         .where({ email })
+    public getPizzas = async (): Promise<IPizzaDB[]> => {
+        const result: IPizzaDB[] = await BaseDatabase
+            .connection(PizzaDatabase.TABLE_PIZZAS)
+            .select()
 
-    //     return result[0]
-    // }
+        return result
+    }
+
+    public getIngredients = async (pizzaName:string):Promise <string[]> =>{
+        const result:IPizzasIngredientsDB[] = await   BaseDatabase
+            .connection(PizzaDatabase.TABLE_PIZZAS_INGREDIENTS)
+            .select("ingredient_name")
+            .where({pizza_name: pizzaName})
+
+            return result.map(item => item.ingredient_name)
+    } 
 
     // public createUser = async (user: User): Promise<void> => {
     //     const userDB = this.toUserDBModel(user)
