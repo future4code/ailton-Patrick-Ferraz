@@ -1,5 +1,0 @@
-### Ping
-GET http://localhost:3003/api/ping
-
-### Endpoint para pegar pizzas
-GET http://localhost:3003/api/pizzas
