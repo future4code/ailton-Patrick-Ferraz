@@ -73,14 +73,14 @@ background: #FFFFFF;
 `;
 
 
-function Megasena() {
+function Sidebar() {
     return (    
       <Teste>
         <SelectConcurso name="loto" id="loto">
         <option value="Megasena">Mega-Sena</option>
         <option value="Lotofacil">Lotofacil</option>
         <option value="Lotomania">Lotomania</option>
-        <option value="DiaDaSorte">DiaDaSorte</option>
+        <option value="DiaDaSorte">Dia Da Sorte</option>
         <option value="Quina">Quina</option>
         <option value="Timemania">Timemania</option>
         </SelectConcurso>
@@ -91,5 +91,4 @@ function Megasena() {
     );
   }
   
-  export default Megasena
-  
+  export default Sidebar

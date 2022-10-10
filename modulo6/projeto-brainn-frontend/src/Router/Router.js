@@ -1,11 +1,11 @@
 import React from "react"
 import { BrowserRouter,Routes,Route } from "react-router-dom"
-import DiaDeSorte from "../pages/DiaDeSorte"
-import Lotofacil from "../pages/Lotofacil"
-import Lotomania from "../pages/Lotomania"
-import Megasena from "../pages/Mega-sena"
-import Quina from "../pages/Quina"
-import Timemania from "../pages/Timemania"
+import DiaDeSorte from "../Pages/DiaDaSorte/DiaDaSorte"
+import Lotofacil from "../Pages/Lotofacil/Lotofacil"
+import Lotomania from "../Pages/Lotomania/Lotomania"
+import Megasena from "../Pages/MegaSena/Megasena"
+import Quina from "../Pages/Quina/Quina"
+import Timemania from "../Pages/Timemania/Timemania"
 
 
 export default function Router(){
