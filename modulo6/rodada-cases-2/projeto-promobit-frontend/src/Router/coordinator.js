@@ -1,5 +1,5 @@
-export const goToDetails = (navigate) =>{
-    navigate("/movie/:movieId")
+export const goToDetails = (navigate,id) =>{
+    navigate(`/movie/${id}`)
 }
 
 export const goToPopularMovies = (navigate) =>{
