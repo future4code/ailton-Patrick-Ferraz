@@ -5,6 +5,8 @@ import { key } from "../../Constants/key";
 import styled from "styled-components";
 import CardMovie from "../../Components/CardMovie/CardMovie";
 import Header from "../../Components/Header/Header";
+import Pagination from "../../Components/Pagination/Pagination";
+import { useParams } from "react-router-dom";
 
 const ContainerPopularMovies = styled.div`
 
@@ -26,6 +28,9 @@ justify-content: center;
 width:100%;
 height: 449px;
 background-color: #2D0C5E;
+p{
+    color: #FFFFFF;
+}
 `
 
 export const MenuPhrase = styled.h4`
@@ -48,8 +53,8 @@ export const MenuItem = styled.button`
 `
 
 const PopularMovies = () =>{
-const [movies, setMovies] = useState([])
-const [genres, setGenres] = useState([])
+const [movies, setMovies] = useState([]);
+const [genres, setGenres] = useState([]);
 
     useEffect(()=>{
         getPopularMovies()
@@ -60,14 +65,14 @@ const [genres, setGenres] = useState([])
 
         axios.get(`${BASE_URL}/movie/popular?api_key=${key}&language=pt-BR&page=1`)
         .then((res)=>{
-            // console.log(res.data.results);
+            console.log(res.data.results);
             setMovies(res.data.results);
             
         })
         .catch((err)=>{
             console.log(err.data);
         })
-    }
+    };
 
     const getGenresMovies = () =>{
 
@@ -80,7 +85,7 @@ const [genres, setGenres] = useState([])
         .catch((err)=>{
             console.log(err.data);
         })
-    }
+    };
 
     return(
         <ContainerPopularMovies>
