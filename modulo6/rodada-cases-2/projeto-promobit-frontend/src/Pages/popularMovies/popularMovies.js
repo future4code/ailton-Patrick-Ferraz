@@ -5,8 +5,7 @@ import { key } from "../../Constants/key";
 import styled from "styled-components";
 import CardMovie from "../../Components/CardMovie/CardMovie";
 import Header from "../../Components/Header/Header";
-import Pagination from "../../Components/Pagination/Pagination";
-import { useParams } from "react-router-dom";
+import ReactPaginate from "react-paginate"
 
 const ContainerPopularMovies = styled.div`
 
@@ -53,20 +52,32 @@ export const MenuItem = styled.button`
 `
 
 const PopularMovies = () =>{
+
 const [movies, setMovies] = useState([]);
 const [genres, setGenres] = useState([]);
+const [items, setItems] = useState(0);
+
 
     useEffect(()=>{
-        getPopularMovies()
+
+        getPopularMovies()  
         getGenresMovies()
-    },[])
+    },[items]);
+
+
+    const handlePageClick = (data) => {
+        console.log("Data.selected",data.selected);
+        let currentpage = data.selected + 1
+        setItems(currentpage)
+
+    }
 
     const getPopularMovies = () =>{
 
-        axios.get(`${BASE_URL}/movie/popular?api_key=${key}&language=pt-BR&page=1`)
+        axios.get(`${BASE_URL}/movie/popular?api_key=${key}&language=pt-BR&page=${items}`)
         .then((res)=>{
-            console.log(res.data.results);
             setMovies(res.data.results);
+            setItems(res.data.page)
             
         })
         .catch((err)=>{
@@ -74,11 +85,12 @@ const [genres, setGenres] = useState([]);
         })
     };
 
+
     const getGenresMovies = () =>{
 
         axios.get(`${BASE_URL}/genre/movie/list?api_key=${key}&language=pt-BR`)
         .then((res)=>{
-          
+          console.log(res.data)
             setGenres(res.data.genres)
             
         })
@@ -86,6 +98,7 @@ const [genres, setGenres] = useState([]);
             console.log(err.data);
         })
     };
+
 
     return(
         <ContainerPopularMovies>
@@ -113,6 +126,26 @@ const [genres, setGenres] = useState([]);
                 })
             }
             </CardsMovies>
+            <ReactPaginate
+            previousLabel={'previous'}
+            nextLabel={'next'}
+            breakLabel={'...'}
+            pageCount={15}
+            marginPagesDisplayed={2}
+            pageRangeDisplayed={3}
+            onPageChange={handlePageClick}
+            containerClassName={'pagination justify-content-center'}
+            pageClassName={'page-item'}
+            pageLinkClassName={'page-link'}
+            previousClassName={'page-item'}
+            previousLinkClassName={'page-link'}
+            nextClassName={'page-item'}
+            nextLinkClassName={'page-link'}
+            breakClassName={'page-item'}
+            breakLinkClassName={'page-link'}
+            activeClassName={'active'}
+
+            />
         </ContainerPopularMovies>
     )
 }
