@@ -1,13 +1,14 @@
 import {red} from '@mui/material/colors';
 import {createTheme} from '@mui/material/styles';
+import {orange} from '@mui/material/colors';
 
 const theme = createTheme({
     pallete: {
         primary:{
-            main: '#556cd6',
+            main:orange[400],
         },
         secundery:{
-            main:'#19857b',
+            main:'#e1f5fe',
         },
         error:{
             main:red.A400,

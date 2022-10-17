@@ -4,7 +4,6 @@ import { PosterImage, PosterImageURL } from "../../Constants/url";
 import { goToDetails } from "../../Router/coordinator";
 
 const ContainerCardMovie = styled.div`
-border:1px solid black;
 margin:0.5rem;
 `
 
@@ -14,14 +13,12 @@ width: 156px;
 height: 232px;
 left: 16px;
 top: 619px;
-border: 1px solid #E7E7E7;
 border-radius: 4px;
 `
 const MovieTitle = styled.h4`
+margin-top: 10px;
 width: 155px;
 height: 40px;
-left: 16px;
-top: 3353px;
 font-family: 'Roboto';
 font-style: normal;
 font-weight: 700;

@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@material-ui/lab": "^4.0.0-alpha.61",
     "react-paginate": "^8.1.3"
   }
 }
