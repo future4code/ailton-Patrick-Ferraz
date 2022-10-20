@@ -74,7 +74,6 @@ const PopularMovies = () => {
         `${BASE_URL}/movie/popular?api_key=${key}&language=pt-BR&page=${page}&with_genres=${genreForURL}`
       )
       .then((res) => {
-        console.log("moVIE",res.data.results);
         setMovies(res.data.results);
         setPage(res.data.page);
       })
@@ -87,8 +86,6 @@ const PopularMovies = () => {
   const movieMap = movies.map((movie) => {
     return <CardMovie key={movie.id} movie={movie} />;
   });
-
-
 
   return (
     <ContainerPopularMovies>

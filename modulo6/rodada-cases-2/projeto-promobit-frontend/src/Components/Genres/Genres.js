@@ -66,7 +66,7 @@ const Genres = ({
         style={{margin:2}}
         size="small"
         key={genre.id}
-        color="primary"
+        color="warning"
         clickable
         onDelete={() =>handleRemove(genre)}
          />)

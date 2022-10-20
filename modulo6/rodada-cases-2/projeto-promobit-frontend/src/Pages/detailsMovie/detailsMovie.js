@@ -7,28 +7,33 @@ import styled from "styled-components";
 import Header from "../../Components/Header/Header";
 import CardCast from "../../Components/CardCast/CardCast";
 import CardRecommendations from "../../Components/CardRecommendations/CardRecommendations";
+import CircularProgressDetails from "../../Components/CircularProgressDetails/CircularProgressDetails";
 
-export const MovieConteiner = styled.div``;
+
+export const MovieConteiner = styled.div`
+width:100%;
+`;
 
 export const MovieInfos = styled.div`
   display: flex;
-  width: 100%;
-  height: 449px;
+  flex-direction: column;
+  height: 1000px;
   background-color: #2d0c5e;
 `;
 
 export const MoviePoster = styled.img`
-  width: 383px;
-  height: 574px;
-  margin: 20px 50px 46px 100px;
+ width: 186px;
+height: 279px;
+  margin: 20px 88px 46px 60px;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
   border-radius: 8px;
 `;
 
 export const MovieDetails = styled.div`
+  height: 1658.66px;
   display: flex;
   flex-direction: column;
-  margin-top: 20px;
+  margin-top: 0px;
   color: #ffffff;
   font-family: "Roboto";
   font-style: normal;
@@ -47,6 +52,7 @@ export const MovieDetails = styled.div`
 `;
 
 export const ContainerCrew = styled.div`
+
   display: flex;
   flex-direction: row;
   margin: 1rem 1rem 1rem 0px;
@@ -59,8 +65,8 @@ export const ContainerMap = styled.div`
 `;
 
 export const ContainerCast = styled.div`
-  width: 90vw;
   display: flex;
+  max-height: 100%;
   flex-direction: row;
   overflow-x: scroll;
   margin-top: 10px;
@@ -68,53 +74,27 @@ export const ContainerCast = styled.div`
 `;
 
 export const CastTitle = styled.h2`
-  margin-top: 250px;
-  font-family: "Roboto";
-  font-style: normal;
-  font-weight: 700;
-  font-size: 28px;
-  line-height: 32px;
-  margin-left: 95px;
+
 `;
 
 export const ContainerTrailer = styled.div`
-  margin-left: 95px;
-  margin-top: 10px;
+
 `;
 
 export const Trailer = styled.iframe`
-  width: 907px;
-  height: 510px;
+
 `;
 
 export const TrailerTitle = styled.h2`
-  margin-top: 50px;
-  font-family: "Roboto";
-  font-style: normal;
-  font-weight: 700;
-  font-size: 28px;
-  line-height: 32px;
-  margin-left: 95px;
+
 `;
 
 export const ContainerRecommendations = styled.div`
-  width: 90vw;
-  display: flex;
-  flex-direction: row;
-  overflow-x: scroll;
-  margin-top: 10px;
-  margin-left: 90px;
-  margin-bottom: 100px;
+
 `;
 
 export const RecommendationTitle = styled.h2`
-  margin-top: 50px;
-  font-family: "Roboto";
-  font-style: normal;
-  font-weight: 700;
-  font-size: 28px;
-  line-height: 32px;
-  margin-left: 95px;
+
 `;
 
 const DetailsMovie = () => {
@@ -130,6 +110,7 @@ const DetailsMovie = () => {
   const [cast, setCast] = useState([]);
   const [keyTrailer, setKeyTrailer] = useState("");
   const [recommendations, setRecommendations] = useState([]);
+  const [voteAverage, setVoteAverage] = useState(0);
 
   useEffect(() => {
     getDetailsMove();
@@ -143,13 +124,13 @@ const DetailsMovie = () => {
     axios
       .get(`${BASE_URL}/movie/${movieId}?api_key=${key}&language=pt-BR&`)
       .then((res) => {
-        // console.log("Details",res.data);
         setMoviePoster(res.data.poster_path);
         setMovieTitle(res.data.title);
         setGenres(res.data.genres);
         setRunTime(res.data.runtime);
         setReleaseDate(res.data.release_date);
         setOverview(res.data.overview);
+        setVoteAverage(res.data.vote_average);
       })
       .catch((err) => {
         console.log(err.data);
@@ -174,7 +155,6 @@ const DetailsMovie = () => {
     axios
       .get(`${BASE_URL}/movie/${movieId}/release_dates?api_key=${key}`)
       .then((res) => {
-        console.log("Release Date e Certification", res.data.results);
         setCertification(res.data.results);
       })
       .catch((err) => {
@@ -232,7 +212,7 @@ const DetailsMovie = () => {
   const textMin = `00${min}`.slice(-2);
   const runTimeRefectored = `${textHour} horas e ${textMin} minutos.`;
 
-  const releaseDateRefactored = releaseDate.split('-').reverse().join('-');
+  const releaseDateRefactored = releaseDate.split('-').reverse().join('/');
 
   const crewMap = crewFilter.map((crew) => {
     return (
@@ -247,14 +227,19 @@ const DetailsMovie = () => {
     <MovieConteiner>
       <Header title={"TMDB"} />
       <MovieInfos>
-        <MoviePoster src={moviePoster ? `${PosterImageURL}${moviePoster} ` : ""} />
+        <MoviePoster src={moviePoster !== null ? `${PosterImageURL}${moviePoster} ` : ""} />
         <MovieDetails>
           <h2>{movieTitle}</h2>
           <p>
-            {certificationFilterBR} anos 
-           • {releaseDateRefactored} (BR) • {genresStringRefactored} •{" "}
-            {runTimeRefectored}
+            {certificationFilterBR[0] !== "" ? `${certificationFilterBR} anos ` : 'Sem classificação indicativa na base de dados '} 
+            <br/>
+           {releaseDateRefactored} (BR) 
+           <br/>
+           {genresStringRefactored}
+           <br/>
+          {runTimeRefectored}
           </p>
+          <CircularProgressDetails voteAverage={voteAverage}/>
           <h3>Sinopse</h3>
           <p>{overview}</p>
           <ContainerCrew>{crewMap}</ContainerCrew>

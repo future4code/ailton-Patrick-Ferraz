@@ -18,11 +18,13 @@ border-radius: 4px;
 
 const CardRecommendations = ({recommendations}) =>{
    
-    return(
+const releaseDateRefactored = recommendations.release_date.split('-').reverse().join('/')
+
+return(
 <ContainerRecommendations>
 <RecommendationPoster src={`${PosterImageURL}${recommendations.poster_path}`}/>
 <h3>{recommendations.title}</h3>
-<p>{recommendations.release_date}</p>
+<p>{releaseDateRefactored}</p>
 </ContainerRecommendations>
     );
 };

@@ -34,12 +34,15 @@ const MovieReleaseData = styled.h5`
 `
 
 const CardMovie = ({movie}) =>{
-    const navigate = useNavigate();
+
+const navigate = useNavigate();
+const releaseDateRefactored = movie.release_date.split('-').reverse().join('/');
+
     return(
         <ContainerCardMovie onClick={()=>goToDetails(navigate,movie.id)}>
             <MoviePoster src={`${PosterImageURL}${movie.poster_path}`}/>
             <MovieTitle>{movie.title}</MovieTitle>
-            <MovieReleaseData>{movie.release_date}</MovieReleaseData>
+            <MovieReleaseData>{releaseDateRefactored}</MovieReleaseData>
            
         </ContainerCardMovie>
     );
