@@ -8,13 +8,13 @@ function CircularProgressDetails({ voteAverage }) {
   const voteAverageRefactored = Math.ceil(voteAverage * 10);
 
   return (
-    <Box sx={{ position: 'relative', display: 'inline-flex' }}>
-      <CircularProgress variant="determinate" value={voteAverageRefactored} 
+    <Box sx={{ mt:2, position: 'relative', display: 'inline-flex' }}>
+      <CircularProgress variant="determinate" size='5rem' value={voteAverageRefactored} 
 color={voteAverageRefactored > 70 ? 'success' : 'warning'} {...voteAverageRefactored} />
       <Box
         sx={{
-          top: 0,
-          left: 8,
+          top:6,
+          left: 30,
           bottom: 0,
           right: 0,
           position: 'absolute',
@@ -26,6 +26,7 @@ color={voteAverageRefactored > 70 ? 'success' : 'warning'} {...voteAverageRefact
         <Typography
           variant="caption"
           component="div"
+          color={voteAverageRefactored > 70 ? 'success' : 'warning'}
         >{`${voteAverageRefactored}%`}</Typography>
       </Box>
     </Box>

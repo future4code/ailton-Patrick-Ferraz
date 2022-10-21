@@ -17,23 +17,27 @@ width:100%;
 export const MovieInfos = styled.div`
   display: flex;
   flex-direction: column;
-  height: 1000px;
+  margin-bottom: 1.5rem;
   background-color: #2d0c5e;
+
+  @media screen and (min-device-width : 1200px){
+    display: flex;
+    flex-direction: row;
+  }
 `;
 
 export const MoviePoster = styled.img`
- width: 186px;
-height: 279px;
-  margin: 20px 88px 46px 60px;
+  width:23rem;
+  height:30rem;
+  margin: 1.5rem 1.5rem;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
   border-radius: 8px;
 `;
 
 export const MovieDetails = styled.div`
-  height: 1658.66px;
   display: flex;
   flex-direction: column;
-  margin-top: 0px;
+  margin: 1rem 1rem;
   color: #ffffff;
   font-family: "Roboto";
   font-style: normal;
@@ -42,6 +46,10 @@ export const MovieDetails = styled.div`
     font-weight: 700;
     font-size: 32px;
     line-height: 38px;
+  }
+
+  h3{
+    margin-top: 2rem;
   }
 
   p {
@@ -55,6 +63,7 @@ export const ContainerCrew = styled.div`
 
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   margin: 1rem 1rem 1rem 0px;
 `;
 
@@ -66,35 +75,44 @@ export const ContainerMap = styled.div`
 
 export const ContainerCast = styled.div`
   display: flex;
-  max-height: 100%;
   flex-direction: row;
   overflow-x: scroll;
   margin-top: 10px;
-  margin-left: 90px;
+  margin-left: 20px;
+
 `;
 
 export const CastTitle = styled.h2`
-
-`;
-
-export const ContainerTrailer = styled.div`
-
+margin: 1.5rem;
 `;
 
 export const Trailer = styled.iframe`
+width: 24rem;
+height: 24rem;
+margin-left: 1rem ;
 
+@media screen and (min-device-width : 1200px){
+  width: 60rem;
+height: 30rem;
+margin-left: 1rem 
+  }
 `;
 
 export const TrailerTitle = styled.h2`
-
+margin: 1.5rem;
 `;
 
 export const ContainerRecommendations = styled.div`
-
+  display: flex;
+  flex-direction: row;
+  overflow-x: scroll;
+  margin-top: 10px;
+  margin-left: 20px;
+  margin-bottom:100px;
 `;
 
 export const RecommendationTitle = styled.h2`
-
+margin: 1.5rem;
 `;
 
 const DetailsMovie = () => {
@@ -216,7 +234,7 @@ const DetailsMovie = () => {
 
   const crewMap = crewFilter.map((crew) => {
     return (
-      <ContainerMap>
+      <ContainerMap key={crew.id}>
         <strong>{crew.name}</strong>
         <p>{crew.job}</p>
       </ContainerMap>
@@ -230,18 +248,18 @@ const DetailsMovie = () => {
         <MoviePoster src={moviePoster !== null ? `${PosterImageURL}${moviePoster} ` : ""} />
         <MovieDetails>
           <h2>{movieTitle}</h2>
-          <p>
-            {certificationFilterBR[0] !== "" ? `${certificationFilterBR} anos ` : 'Sem classificação indicativa na base de dados '} 
-            <br/>
-           {releaseDateRefactored} (BR) 
+          
+          {certificationFilterBR[0] !== "" ? `${certificationFilterBR} anos ` : 'Sem classificação indicativa na base de dados '}
            <br/>
-           {genresStringRefactored}
+           Data de lançamento: {releaseDateRefactored} (BR) 
            <br/>
-          {runTimeRefectored}
-          </p>
+           Gênero: {genresStringRefactored}
+           <br/>
+          Duração: {runTimeRefectored}
+          
           <CircularProgressDetails voteAverage={voteAverage}/>
           <h3>Sinopse</h3>
-          <p>{overview}</p>
+          {overview}
           <ContainerCrew>{crewMap}</ContainerCrew>
         </MovieDetails>
       </MovieInfos>
@@ -252,9 +270,7 @@ const DetailsMovie = () => {
         })}
       </ContainerCast>
       <TrailerTitle>Trailer</TrailerTitle>
-      <ContainerTrailer>
         <Trailer src={`${trailerURL}${keyTrailer}`} />
-      </ContainerTrailer>
       <RecommendationTitle>Recomendações</RecommendationTitle>
       <ContainerRecommendations>
         {recommendations.map((recommendations) => {

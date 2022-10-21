@@ -5,6 +5,10 @@ import { goToDetails } from "../../Router/coordinator";
 
 const ContainerCardMovie = styled.div`
 margin:0.5rem;
+display : flex;
+flex-direction: column;
+justify-content:center;
+
 `
 
 const MoviePoster = styled.img`
@@ -22,7 +26,7 @@ height: 40px;
 font-family: 'Roboto';
 font-style: normal;
 font-weight: 700;
-font-size: 14px;
+font-size: 1.2rem;
 line-height: 20px;
 display: flex;
 align-items: center;
@@ -30,7 +34,16 @@ color: #000000;
 `
 
 const MovieReleaseData = styled.h5`
-
+width: 155px;
+height: 40px;
+font-family: 'Roboto';
+font-style: normal;
+font-weight: 700;
+font-size: 14px;
+line-height: 20px;
+display: flex;
+align-items: center;
+color: #000000;
 `
 
 const CardMovie = ({movie}) =>{

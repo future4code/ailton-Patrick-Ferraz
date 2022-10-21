@@ -17,7 +17,6 @@ border-radius: 4px;
 `;
 
 const CardRecommendations = ({recommendations}) =>{
-   
 const releaseDateRefactored = recommendations.release_date.split('-').reverse().join('/')
 
 return(

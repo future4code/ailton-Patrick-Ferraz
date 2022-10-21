@@ -10,7 +10,7 @@ import useGenres from "../../Hooks/useGenre";
 import Genres from "../../Components/Genres/Genres";
 
 const ContainerPopularMovies = styled.div`
-width: 100%;
+width: 100vw;
 `;
 
 const CardsMovies = styled.div`
@@ -19,6 +19,7 @@ const CardsMovies = styled.div`
   flex-wrap: wrap;
   justify-content: space-evenly;
   margin-top: 2rem;
+  margin-bottom: 2rem;
 `;
 
 export const Menu = styled.div`
@@ -49,7 +50,9 @@ export const MenuPhrase = styled.h4`
   color: #ffffff;
 `;
 
-export const MenuItem = styled.div``;
+export const MenuItem = styled.div`
+
+`;
 
 const PopularMovies = () => {
   const [movies, setMovies] = useState([]);

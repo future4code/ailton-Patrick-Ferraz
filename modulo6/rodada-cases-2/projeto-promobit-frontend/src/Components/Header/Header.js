@@ -1,4 +1,6 @@
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import { goToPopularMovies } from "../../Router/coordinator";
 
 export const ConteinerHeader = styled.div`
 width: 100%;
@@ -20,9 +22,12 @@ color: #FFFFFF;
 `;
 
 const Header= ({title}) =>{
+
+    const navigate = useNavigate();
+
     return(
        <ConteinerHeader>
-        <Title>{title}</Title>
+        <Title onClick={()=>goToPopularMovies(navigate)}>{title}</Title>
        </ConteinerHeader>
     );
 };
