@@ -2,57 +2,14 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { BASE_URL } from "../../Constants/url";
 import { key } from "../../Constants/key";
-import styled from "styled-components";
 import CardMovie from "../../Components/CardMovie/CardMovie";
 import Header from "../../Components/Header/Header";
 import ReactPaginate from "react-paginate";
 import useGenres from "../../Hooks/useGenre";
 import Genres from "../../Components/Genres/Genres";
+import { CardsMovies, ContainerPopularMovies, Menu, MenuItem, MenuPhrase } from "./styled";
 
-const ContainerPopularMovies = styled.div`
-width: 100vw;
-`;
 
-const CardsMovies = styled.div`
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  margin-top: 2rem;
-  margin-bottom: 2rem;
-`;
-
-export const Menu = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 449px;
-  background-color: #2d0c5e;
-  p {
-    color: #ffffff;
-  }
-`;
-
-export const MenuPhrase = styled.h4`
-  width: 100%;
-  height: 112px;
-  top: 141px;
-  left: 328px;
-  font-family: "Roboto";
-  font-style: normal;
-  font-weight: 700;
-  font-size: 34px;
-  line-height: 30px;
-  text-align: center;
-  letter-spacing: -0.005em;
-  color: #ffffff;
-`;
-
-export const MenuItem = styled.div`
-
-`;
 
 const PopularMovies = () => {
   const [movies, setMovies] = useState([]);
@@ -60,6 +17,7 @@ const PopularMovies = () => {
   const [page, setPage] = useState(1);
   const [selectedGenres, setSelectedGenres] = useState([]);
   const genreForURL = useGenres(selectedGenres)
+
 
  useEffect(() => {
     getPopularMovies();

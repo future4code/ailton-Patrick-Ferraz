@@ -3,15 +3,7 @@ import React, { useEffect} from 'react'
 import { key } from '../../Constants/key';
 import { BASE_URL } from '../../Constants/url';
 import Chip from '@mui/material/Chip';
-import styled from 'styled-components';
-
-export const ContainerGenres = styled.div`
-padding:1em;
-background-color:#2d0c5e;
-display: flex;
-flex-wrap: wrap;
-justify-content: center;
-`;
+import { ContainerGenres } from './styled';
 
 const Genres = ({
   selectedGenres,
@@ -36,22 +28,14 @@ const Genres = ({
   setPage(1);
   };
 
-  
 
-  const getGenresMovies = () => {
-   axios.get(`${BASE_URL}/genre/movie/list?api_key=${key}&language=pt-BR`)
-   .then((res)=>{
-    setGenres(res.data.genres)
-   })
-   .catch((err)=>{
-    console.log(err)
-   })
-    
-  };
 
   useEffect(() => {
-    getGenresMovies()
-  
+ 
+    getGenresMovies();
+
+    //eslint-disable-next-line
+
   }, []);
 
   useEffect(() => {
@@ -60,6 +44,17 @@ const Genres = ({
       setSelectedGenres(items);
     }
   }, []);
+
+  const getGenresMovies = () => {
+    axios.get(`${BASE_URL}/genre/movie/list?api_key=${key}&language=pt-BR`)
+    .then((res)=>{
+     setGenres(res.data.genres)
+    })
+    .catch((err)=>{
+     console.log(err)
+    })
+     
+   };
 
   return (
     <ContainerGenres>

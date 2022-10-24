@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const ContainerCardCast = styled.div`
+export const ContainerRecommendations = styled.div`
 display:flex;
 flex-direction: column;
 background: #FFFFFF;
@@ -9,8 +9,8 @@ border-radius: 4px;
 margin: 0.5rem;
 `;
 
-export const CastImage = styled.img`
-width: 175px;
-height: 222px;
+export const RecommendationPoster= styled.img`
+width: 176px;
+height: 264px;
 border-radius: 4px;
 `;
